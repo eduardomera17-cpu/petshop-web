@@ -1,0 +1,408 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ─────────────── Auxiliares (TRD §4.4) ───────────────
+    function isSignedIn() {
+      return request.auth != null
+          && request.auth.token.firebase.sign_in_provider != 'anonymous';
+    }
+    function role()        { return isSignedIn() ? request.auth.token.role : ''; }
+    function isOwner(uid)  { return isSignedIn() && request.auth.uid == uid; }
+    function isAdmin()     { return role() == 'ADMIN'; }
+    function isSuperAdmin(){ return role() == 'SUPERADMIN'; }
+    function isStaff()     { return isAdmin() || isSuperAdmin(); }
+    function isClient()    { return role() == 'CLIENT'; }
+    function isActive()    { return isSignedIn() && request.auth.token.status == 'ACTIVE'; }
+    function changed()     { return request.resource.data.diff(resource.data).affectedKeys(); }
+    function onlyChanged(keys) { return changed().hasOnly(keys); }
+
+    // ─────────────── 1. Usuarios (N-19, N-21, P-02, CF-08) ───────────────
+    match /users/{userId} {
+      allow read:   if isOwner(userId) || isStaff();
+      allow create: if false;
+
+      allow update: if isOwner(userId) && isActive()
+                    && onlyChanged(['fullName','phone','documentType','documentNumber',
+                                    'address','searchName','audit'])
+                    && request.resource.data.fullName is string
+                    && request.resource.data.fullName.size() >= 1
+                    && request.resource.data.fullName.size() <= 100
+                    && request.resource.data.phone is string
+                    && request.resource.data.phone.matches('^\\+593[0-9]{9}$')
+                    && request.resource.data.address is string
+                    && request.resource.data.address.size() >= 1
+                    && request.resource.data.address.size() <= 200
+                    && request.resource.data.documentType in ['CEDULA','PASSPORT','RUC']
+                    && request.resource.data.documentNumber is string
+                    && (   (request.resource.data.documentType == 'CEDULA'
+                            && request.resource.data.documentNumber.matches('^[0-9]{10}$'))
+                        || (request.resource.data.documentType == 'RUC'
+                            && request.resource.data.documentNumber.matches('^[0-9]{13}$'))
+                        || (request.resource.data.documentType == 'PASSPORT'
+                            && request.resource.data.documentNumber.matches('^[A-Za-z0-9]{5,20}$')))
+                    && request.resource.data.searchName is string
+                    && request.resource.data.searchName.size() >= 1
+                    && request.resource.data.searchName.size() <= 100
+                    && request.resource.data.audit.updatedBy == request.auth.uid
+                    && request.resource.data.audit.updatedAt == request.time
+                    && request.resource.data.audit.createdBy == resource.data.audit.createdBy
+                    && request.resource.data.audit.createdAt == resource.data.audit.createdAt
+                    && request.resource.data.email  == resource.data.email
+                    && request.resource.data.role   == resource.data.role
+                    && request.resource.data.status == resource.data.status
+                    && request.resource.data.photoPath == resource.data.photoPath;
+
+      allow delete: if false;
+    }
+
+    // ─────────────── 2. Intenciones de Subida (§2.12, §3.5.A) ───────────────
+    match /upload_intents/{intentId} {
+      allow read:   if isSignedIn() && resource.data.ownerUid == request.auth.uid;
+      allow create: if isActive()
+                    && request.resource.data.keys().hasOnly(['id','ownerUid','purpose','targetId',
+                           'status','rejectionCode','resultPath','createdAt','expiresAt'])
+                    && request.resource.data.ownerUid == request.auth.uid
+                    && request.resource.data.status == 'PENDING'
+                    && request.resource.data.resultPath == null
+                    && request.resource.data.rejectionCode == null
+                    && request.resource.data.createdAt == request.time
+                    && (request.resource.data.targetId == null
+                        || (request.resource.data.targetId is string
+                            && request.resource.data.targetId.size() <= 128))
+                    && request.resource.data.purpose in ['USER_PHOTO','PET_PHOTO','PRODUCT_IMAGE',
+                                                         'CHAT_IMAGE','CLINICAL_ATTACHMENT',
+                                                         'BUSINESS_LOGO']
+                    && (request.resource.data.purpose != 'CLINICAL_ATTACHMENT' || isStaff())
+                    && (request.resource.data.purpose != 'PRODUCT_IMAGE'       || isStaff())
+                    && (request.resource.data.purpose != 'BUSINESS_LOGO'       || isStaff());
+      allow update, delete: if false;
+    }
+
+    // ─────────────── 3. Réplica Pública Operativa (C-01, C-02, N-12, ADR-010) ───────────────
+    match /business_config/public_operating {
+      allow read:  if isSignedIn();
+      allow write: if false;
+    }
+
+    // ─────────────── 4. Colecciones Cerradas Explícitas ───────────────
+    match /idempotency/{requestId} { allow read, write: if false; }
+    match /human_checks/{checkKey} { allow read, write: if false; }
+    match /mail/{mailId}          { allow read, write: if false; }
+    match /mail_templates/{name}  { allow read, write: if false; }
+
+    // ─────────────── 5. Mascotas (M-01..M-06, CL-05, CL-07, CA-30) ───────────────
+    // searchName lo precalcula el cliente; el trigger §3.5.G garantiza la forma
+    // canónica en el servidor (ADR-012) para proteger las búsquedas de CL-04.
+    match /pets/{petId} {
+      allow read: if isStaff() || (isSignedIn() && resource.data.ownerId == request.auth.uid);
+
+      allow create: if isClient() && isActive()
+                    && request.resource.data.keys().hasOnly(['id','ownerId','name','searchName',
+                           'species','breed','birthDate','sex','reproductiveStatus',
+                           'allergies','photoPath','lastWeightGrams','lastWeightDate',
+                           'status','audit'])
+                    && request.resource.data.ownerId == request.auth.uid
+                    && request.resource.data.status  == 'ACTIVE'
+                    && petOwnerFieldsValid()
+                    && request.resource.data.lastWeightGrams == null    // sólo el servidor
+                    && request.resource.data.lastWeightDate  == null    // sólo el servidor
+                    && request.resource.data.photoPath == null          // sólo el pipeline §3.5.A
+                    && request.resource.data.audit.createdBy == request.auth.uid
+                    && request.resource.data.audit.createdAt == request.time;
+
+      // M-03: el cliente mantiene su ficha. NO el estado (M-04 es una callable
+      // indivisible), NO el propietario, NO la proyección clínica del peso y
+      // NO photoPath, que lo escribe el pipeline de §3.5.A (AUD-025, AUD-073).
+      allow update: if (isClient() && isActive() && resource.data.ownerId == request.auth.uid
+                        && onlyChanged(['name','searchName','species','sex','reproductiveStatus',
+                                        'breed','birthDate','allergies','audit'])
+                        && petOwnerFieldsValid()
+                        && request.resource.data.audit.updatedBy == request.auth.uid
+                        && request.resource.data.audit.updatedAt == request.time)
+                    // CL-05 y CL-07: al personal, exactamente DOS campos y ni uno más.
+                    // La foto ya no está aquí: CL-05 va por upload_intents con
+                    // purpose PET_PHOTO (§2.12), que es lo que garantiza N-22.
+                    || (isStaff() && isActive()
+                        && onlyChanged(['sex','reproductiveStatus','audit'])
+                        && request.resource.data.sex in ['MALE','FEMALE']
+                        && request.resource.data.reproductiveStatus in ['INTACT','NEUTERED','UNKNOWN']
+                        && request.resource.data.audit.updatedBy == request.auth.uid
+                        && request.resource.data.audit.updatedAt == request.time);
+
+      allow delete: if false;   // M-04 desactiva, no borra
+    }
+
+    function petOwnerFieldsValid() {
+      return request.resource.data.name is string
+          && request.resource.data.name.size() > 0
+          && request.resource.data.name.size() <= 60
+          && request.resource.data.species is string
+          && request.resource.data.species.size() > 0
+          && request.resource.data.species.size() <= 40
+          && request.resource.data.searchName is string
+          && request.resource.data.searchName.size() > 0
+          && request.resource.data.searchName.size() <= 60
+          && (request.resource.data.breed == null
+              || (request.resource.data.breed is string && request.resource.data.breed.size() <= 60))
+          && (request.resource.data.allergies == null
+              || (request.resource.data.allergies is string && request.resource.data.allergies.size() <= 500))
+          && (request.resource.data.birthDate == null
+              || (request.resource.data.birthDate is string
+                  && request.resource.data.birthDate.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')))
+          && request.resource.data.sex in ['MALE','FEMALE']
+          && request.resource.data.reproductiveStatus in ['INTACT','NEUTERED','UNKNOWN'];
+    }
+
+    // ─────────── 6. Registro clínico: confidencialidad total (N-20, CA-14, CA-15, CA-44) ───────────
+    // El cliente no lee ni escribe, en ninguna circunstancia (CA-14, CA-15, CA-44).
+    // El personal LEE aquí; ESCRIBE sólo por callable, porque cada entrada exige
+    // congelar el bloque de identificación, versionar y validar por tipo.
+    match /pets/{petId}/clinical_records/{recordId} {
+      allow read:  if isStaff();
+      allow write: if false;
+
+      match /versions/{versionId} {
+        allow read:  if isStaff();
+        allow write: if false;   // Nada se borra ni se altera, para ningún rol (CF-11)
+      }
+    }
+
+    // ─────────────── 7. Citas y cerrojos (C-01..C-12, AG-01..AG-07) ───────────────
+    // Escritura CERO desde el cliente: precio (C-10), exclusividades (C-11, C-12),
+    // límite diario (N-11) y recálculo de proforma (FA-03) son inter-documentales.
+    match /appointments/{appointmentId} {
+      allow read:  if isStaff() || (isSignedIn() && resource.data.clientId == request.auth.uid);
+      allow write: if false;
+    }
+
+    // Centinelas de exclusividad: legibles para pintar disponibilidad (C-01, C-02).
+    // No contienen ningún dato de cliente (§2.9).
+    match /slot_locks/{slotKey}     { allow read: if isSignedIn(); allow write: if false; }
+    match /pet_day_locks/{lockKey}  { allow read: if isSignedIn(); allow write: if false; }
+
+    // Bloqueos administrativos (AG-06). El cliente los lee para no ofrecer
+    // franjas cerradas; los escribe setAvailabilityBlock (§3.2.I).
+    match /availability_blocks/{blockKey} {
+      allow read:  if isSignedIn();
+      allow write: if false;
+    }
+
+    // ─────────────── 8. Catálogo de Servicios (SE-01..SE-04) ───────────────
+    // SE-01..SE-04. hasOnly() añadido en la v1.5: sin él, el personal podía
+    // inyectar campos arbitrarios en el catálogo (AUD-041a).
+    match /services/{serviceId} {
+      allow read: if isSignedIn();
+      allow create, update: if isStaff() && isActive()
+                   && request.resource.data.keys().hasOnly(['id','name','searchName','description',
+                          'basePriceCents','iceBp','isClinical','estimatedDurationMinutes',
+                          'isActive','audit'])
+                   && request.resource.data.name is string
+                   && request.resource.data.name.size() > 0
+                   && request.resource.data.name.size() <= 80
+                   && request.resource.data.searchName is string
+                   && request.resource.data.searchName.size() > 0
+                   && request.resource.data.searchName.size() <= 80
+                   && request.resource.data.description is string
+                   && request.resource.data.description.size() <= 500
+                   && request.resource.data.basePriceCents is int
+                   && request.resource.data.basePriceCents >= 0
+                   && request.resource.data.iceBp is int
+                   && request.resource.data.iceBp >= 0
+                   && request.resource.data.iceBp <= 10000        // 100 % — cota de cordura
+                   && request.resource.data.isClinical is bool
+                   && request.resource.data.isActive is bool
+                   && request.resource.data.estimatedDurationMinutes is int
+                   && request.resource.data.audit.updatedBy == request.auth.uid
+                   && request.resource.data.audit.updatedAt == request.time;
+      allow delete: if false;                       // SE-03 desactiva, no borra (N-19)
+    }
+
+    // ─────────────── 9. Contadores diarios (N-11) ───────────────
+    // N-11: el cliente LEE su cupo para mostrarlo; NO lo escribe jamás.
+    match /user_daily_counters/{counterId} {
+      allow read:  if isStaff()
+                   || (isSignedIn() && counterId.split('_')[0] == request.auth.uid);
+      allow write: if false;
+    }
+
+    // ─────────────── 10. Catálogo de Productos (PR-01..PR-07, IN-01..IN-04) ───────────────
+    match /products/{productId} {
+      allow read: if isSignedIn();
+
+      // stock SÓLO en la creación. Después lo mueven createProductRequest,
+      // cancelProductRequestByClient y adjustProductStock, todas transaccionales:
+      // una edición directa de catálogo pisaba el decremento (AUD-026, ERR-008c).
+      allow create: if isStaff() && isActive()
+                   && request.resource.data.keys().hasOnly(['id','name','searchName','description',
+                          'category','basePriceCents','iceBp','stock','imagePath','isActive','audit'])
+                   && productFieldsValid()
+                   && request.resource.data.stock is int
+                   && request.resource.data.stock >= 0
+                   && request.resource.data.imagePath == null      // sólo el pipeline §3.5.A
+                   && request.resource.data.audit.createdBy == request.auth.uid
+                   && request.resource.data.audit.createdAt == request.time;
+
+      allow update: if isStaff() && isActive()
+                   && onlyChanged(['name','searchName','description','category',
+                                   'basePriceCents','iceBp','isActive','audit'])
+                   && productFieldsValid()
+                   && request.resource.data.stock     == resource.data.stock
+                   && request.resource.data.imagePath == resource.data.imagePath
+                   && request.resource.data.audit.updatedBy == request.auth.uid
+                   && request.resource.data.audit.updatedAt == request.time;
+
+      allow delete: if false;
+    }
+
+    function productFieldsValid() {
+      return request.resource.data.name is string
+          && request.resource.data.name.size() > 0
+          && request.resource.data.name.size() <= 80
+          && request.resource.data.searchName is string
+          && request.resource.data.searchName.size() > 0
+          && request.resource.data.searchName.size() <= 80
+          && request.resource.data.description is string
+          && request.resource.data.description.size() <= 500
+          && request.resource.data.basePriceCents is int
+          && request.resource.data.basePriceCents >= 0
+          && request.resource.data.iceBp is int
+          && request.resource.data.iceBp >= 0
+          && request.resource.data.iceBp <= 10000
+          && request.resource.data.isActive is bool
+          && request.resource.data.category in ['FOOD','MEDICINE','ACCESSORIES','HYGIENE'];
+    }
+
+    // ─────────────── 11. Solicitudes de producto (PR-01..PR-07, IN-04, CA-25) ───────────────
+    // Crear descuenta stock y consume cuota; avanzar y cancelar mueven inventario
+    // y proformas. Todo por callable. El cliente sólo lee las propias (CA-25).
+    match /product_requests/{requestId} {
+      allow read:  if isStaff() || (isSignedIn() && resource.data.clientId == request.auth.uid);
+      allow write: if false;
+    }
+
+    // ─────────────── 12. Proformas (FA-01..FA-09) ───────────────
+    match /proformas/{proformaId} {
+      // Un Borrador NO es visible para el cliente (FA-03, CA-49)
+      allow read: if isStaff()
+                  || (isSignedIn()
+                      && resource.data.clientId == request.auth.uid
+                      && resource.data.status in ['DELIVERED','FINALIZED','VOIDED']);
+      allow write: if false;
+
+      match /notices/{noticeId} {
+        allow read:  if isStaff();
+        allow write: if false;
+      }
+    }
+
+    // ─────────────── 13. Configuración Administrativa y Réplica Fiscal (AUD-154, AUD-155) ───────────────
+    match /business_config/operating_parameters {
+      allow read:   if isStaff();
+      allow write:  if false;                       // updateOperatingParameters (§3.4.J)
+    }
+
+    match /business_config/billing_parameters {
+      allow read: if isStaff();                     // Datos fiscales: nunca al cliente
+      // CF-13, pero jamás el correlativo ni el cerrojo de entrega (FA-05)
+      // logoPath NO está aquí: lo escribe el pipeline §3.5.A por upload_intents
+      // con purpose BUSINESS_LOGO, abierto a todo el personal (CF-13, AUD-037).
+      allow update: if isStaff() && isActive()
+                    && onlyChanged(['businessName','taxId','address','phone',
+                                    'proformaSeries','ivaBp','iceIncludedInIvaBase','audit'])
+                    && request.resource.data.businessName is string
+                    && request.resource.data.businessName.size() > 0
+                    && request.resource.data.businessName.size() <= 200
+                    && request.resource.data.taxId is string
+                    && request.resource.data.taxId.size() <= 20
+                    && request.resource.data.proformaSeries is string
+                    && request.resource.data.proformaSeries.size() <= 20
+                    && request.resource.data.ivaBp is int
+                    && request.resource.data.ivaBp >= 0
+                    && request.resource.data.ivaBp <= 10000        // 100 % — un 1500 % era admisible (AUD-041c)
+                    && request.resource.data.iceIncludedInIvaBase is bool
+                    && request.resource.data.audit.updatedBy == request.auth.uid
+                    && request.resource.data.audit.updatedAt == request.time
+                    && request.resource.data.logoPath == resource.data.logoPath
+                    && request.resource.data.nextProformaNumber == resource.data.nextProformaNumber
+                    && request.resource.data.deliveryLock == resource.data.deliveryLock;
+      allow create, delete: if false;
+    }
+
+    // Réplica mínima para que el cliente pinte el precio con impuestos (FA-08)
+    match /business_config/public_pricing {
+      allow read:  if isSignedIn();
+      allow write: if false;
+    }
+
+    // ─────────────── 14. Chat (CH-01..CH-06, MC-01..MC-09, CA-04) ───────────────
+    match /chats/{chatId} {
+      function isRoomParticipant() {
+        return chatId == 'STAFF_INTERNAL' ? isStaff()
+                                          : (isStaff() || isOwner(chatId));
+      }
+
+      allow get:    if isRoomParticipant();
+      allow list:   if isStaff();
+      allow create: if false;                       // La sala la crea el servidor (CH-01)
+
+      // MC-04: archivar es EXCLUSIVO del personal (CA-16, CA-41).
+      // El contador y el último mensaje los mantienen los triggers.
+      allow update: if isStaff() && isActive() && onlyChanged(['isArchived','updatedAt']);
+      allow delete: if false;                       // MC-08 va por callable
+
+      match /messages/{messageId} {
+        allow read: if isRoomParticipant();
+
+        allow create: if isRoomParticipant() && isActive()
+                      && request.resource.data.keys().hasOnly(['id','senderUid','senderName',
+                             'senderRole','text','imagePath','readByStaff','createdAt'])
+                      && request.resource.data.senderUid  == request.auth.uid
+                      && request.resource.data.senderRole == role()
+                      && request.resource.data.createdAt  == request.time
+                      // El valor que llegue aquí lo pisa el trigger (§3.5.B); se
+                      // acota sólo para que no entre un documento desmesurado.
+                      && request.resource.data.senderName is string
+                      && request.resource.data.senderName.size() <= 100
+                      && (request.resource.data.text == null
+                          || (request.resource.data.text is string
+                              && request.resource.data.text.size() <= 4000))  // CH-02
+                      && (request.resource.data.text != null
+                          || request.resource.data.imagePath != null)
+                      // La ruta que un trigger llegará a BORRAR con privilegios de
+                      // servidor no puede elegirla el cliente: anclada a la sala.
+                      && (request.resource.data.imagePath == null
+                          || request.resource.data.imagePath
+                               .matches('^media/chat/' + chatId + '/[A-Za-z0-9._-]{1,120}$'))
+                      && request.resource.data.readByStaff == false
+                      && (isStaff() || get(/databases/$(database)/documents/chats/$(chatId)).data.get('isBlocked', false) != true);
+
+        allow update: if false;                     // Los mensajes no se editan (MC-08)
+
+        // CH-06 y MC-05: sólo el autor borra lo suyo. La moderación global del
+        // Super Usuario (MC-08) NO se hace aquí: va por callable, porque escribe
+        // auditoría y purga adjuntos.
+        allow delete: if isRoomParticipant() && isActive()
+                      && resource.data.senderUid == request.auth.uid;
+      }
+
+      match /read_states/{uid} {
+        allow read:  if isStaff();
+        allow write: if false;                      // markChatAsRead (MC-09)
+      }
+    }
+
+    // ─────────────── 15. Auditoría del Sistema (N-AD-08, TRD §4.4) ───────────────
+    // Lectura exclusiva del Super Usuario (N-AD-08, TRD §4.4).
+    // Escritura denegada para cualquier rol del cliente: sólo escribe el Admin SDK.
+    match /audit_log/{entryId} {
+      allow read:  if isSuperAdmin();
+      allow write: if false;
+    }
+
+    // ─────────────── Cierre: todo lo no declarado queda denegado ───────────────
+    match /{document=**} { allow read, write: if false; }
+  }
+}
+

@@ -1,0 +1,2646 @@
+{
+  "@@locale": "es",
+  "appTitle": "PetShop Web",
+  "imageFormatUnsupported": "El formato del archivo no es compatible. Solo se admiten imágenes en formato JPEG, PNG, WebP y AVIF.",
+  "imageFormatHeicRejected": "Los archivos en formato de alta eficiencia (HEIC/HEIF) no están admitidos. Por favor, selecciona una imagen en formato JPEG, PNG, WebP o AVIF.",
+  "imageSizeExceeded": "El archivo excede el tamaño máximo permitido de 5 MB.",
+  "loading": "Cargando...",
+  "loadingSession": "Verificando sesión...",
+  "retry": "Reintentar",
+  "close": "Cerrar",
+  "accept": "Aceptar",
+  "cancel": "Cancelar",
+  "offlineBannerMessage": "Sin conexión a Internet. Las acciones están deshabilitadas para proteger la integridad de los datos.",
+  "connectionRestored": "Conexión restablecida.",
+  "navHome": "Inicio",
+  "navPets": "Mis Mascotas",
+  "navAppointments": "Citas",
+  "navCatalog": "Catálogo",
+  "navBilling": "Facturación",
+  "navChat": "Mensajería",
+  "navProfile": "Mi Perfil",
+  "navAdmin": "Panel de Administración",
+  "navAdminAgenda": "Agenda General",
+  "navAdminGovernance": "Gobierno y Cuentas",
+  "navLogin": "Iniciar Sesión",
+  "navRegister": "Registrarse",
+  "navForgotPassword": "Recuperar Contraseña",
+  "navSignOut": "Cerrar Sesión",
+  "unauthorizedAdminAccess": "No tienes permisos de administrador.",
+  "unauthorizedGovernanceAccess": "No tienes permisos para acceder al módulo de gobierno.",
+  "unauthorizedGeneral": "No tienes autorización para acceder a esta sección.",
+  "sessionExpired": "Tu sesión ha expirado o requiere reautenticación.",
+  "errorGeneric": "Ha ocurrido un error inesperado. Por favor, intenta nuevamente.",
+  "errorNetwork": "Error de conexión. Por favor, revisa tu acceso a internet.",
+  "errorSlotTaken": "El horario seleccionado ya no se encuentra disponible.",
+  "errorPetAlreadyBookedThatDay": "La mascota ya cuenta con una cita programada para ese día.",
+  "errorSlotBlocked": "El horario seleccionado se encuentra bloqueado para reservas.",
+  "errorAppointmentNotReschedulable": "La cita no se puede reagendar en su estado actual.",
+  "errorProformaEmpty": "La proforma debe contener al menos un concepto.",
+  "errorTooManyItems": "Se ha excedido el límite máximo de elementos permitidos.",
+  "errorTooManyAttachments": "Se ha excedido el límite máximo de adjuntos permitidos.",
+  "errorDailyLimitAppointments": "Has alcanzado el límite diario de citas permitidas.",
+  "errorDailyLimitRequests": "Has alcanzado el límite diario de solicitudes permitidas.",
+  "errorOutOfStock": "El producto solicitado está agotado.",
+  "errorAppointmentNotCancellable": "La cita ya no puede ser cancelada.",
+  "errorAlreadyCancelled": "La cita ya fue cancelada anteriormente.",
+  "errorPetNotAvailable": "La mascota seleccionada no está disponible o no se encuentra activa.",
+  "errorServiceNotAvailable": "El servicio seleccionado no está disponible en este momento.",
+  "errorConfigUnavailable": "No se pudo cargar la configuración del sistema. Intenta de nuevo.",
+  "errorPetAlreadyDeactivated": "La mascota ya ha sido dada de baja previamente.",
+  "errorNoChange": "No se han detectado cambios respecto al estado original.",
+  "errorInvalidTransition": "La operación solicitada no es válida para el estado actual.",
+  "errorConceptLockedByDeliveredProforma": "El concepto no puede modificarse porque está incluido en una proforma entregada.",
+  "errorProformaNotDraft": "La proforma solo puede modificarse mientras esté en borrador.",
+  "errorProformaNotVoidable": "La proforma no puede ser anulada en su estado actual.",
+  "errorDeliveryInProgress": "Hay una entrega en progreso para este concepto.",
+  "errorDeliveryLeaseLost": "Se perdió el bloqueo exclusivo de entrega. Intenta nuevamente.",
+  "errorConceptNoLongerValid": "El concepto ya no es válido para su procesamiento.",
+  "errorEntryAnnulledNotEditable": "Una entrada anulada no puede ser modificada.",
+  "errorAnnulmentNotAnnullable": "Una entrada de anulación no puede ser anulada.",
+  "errorSuperadminImmutable": "La cuenta de Super Administrador no puede ser modificada por esta vía.",
+  "errorRoleChangeNotSupported": "No se permite el cambio de rol en la cuenta.",
+  "errorReauthRequired": "Por seguridad, debes volver a iniciar sesión para realizar esta acción.",
+  "errorAccountNotActive": "Tu cuenta se encuentra inactiva o deshabilitada. Contacta al soporte.",
+  "errorProfileAlreadyComplete": "El perfil de usuario ya ha sido completado anteriormente.",
+  "errorAccountProvisioningFailed": "Error al crear la cuenta. Por favor, intenta de nuevo.",
+  "errorStaffReactivationRequiresSuperadmin": "La reactivación de cuentas de personal requiere permisos de Super Usuario.",
+  "errorVerificationRequired": "Es obligatorio completar la verificación de seguridad.",
+  "errorVerificationFailed": "La verificación de seguridad no fue superada o ha caducado. Intenta de nuevo.",
+  "errorVerificationActionMismatch": "La verificación de seguridad no coincide con la acción solicitada.",
+  "errorVerificationHighRisk": "No se pudo validar la solicitud por motivos de seguridad.",
+  "errorVerificationUnavailable": "El servicio de verificación de seguridad no está disponible momentáneamente.",
+  "errorInvalidStockAdjustment": "El ajuste solicitado dejaría el inventario en un valor negativo.",
+  "errorRequestLockedByDeliveredProforma": "La solicitud está vinculada a una proforma entregada.",
+  "errorEmptyRequest": "Debes seleccionar al menos un producto para enviar la solicitud.",
+  "errorTooManyRequestLines": "No puedes solicitar más de {max} productos distintos a la vez.",
+  "@errorTooManyRequestLines": {
+    "description": "Error al superar el limite de lineas de solicitud",
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "errorDuplicateProductLine": "Hay productos duplicados en la solicitud.",
+  "errorInvalidQuantity": "La cantidad de cada producto debe estar entre 1 y {max} unidades.",
+  "@errorInvalidQuantity": {
+    "description": "Error cuando la cantidad no es valida",
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "errorProductNotAvailable": "Uno o más productos ya no están disponibles en el catálogo.",
+  "errorProductNotAvailableNamed": "Ya no están disponibles en el catálogo: {products}.",
+  "@errorProductNotAvailableNamed": {
+    "description": "Error cuando productos especificos ya no estan disponibles",
+    "placeholders": {
+      "products": {
+        "type": "String"
+      }
+    }
+  },
+  "errorOutOfStockNamed": "Están agotados: {products}.",
+  "@errorOutOfStockNamed": {
+    "description": "Error cuando no hay stock para productos especificos",
+    "placeholders": {
+      "products": {
+        "type": "String"
+      }
+    }
+  },
+  "errorInsufficientStock": "No hay existencias suficientes para la cantidad solicitada.",
+  "errorInsufficientStockNamed": "No hay existencias suficientes para la cantidad solicitada de: {products}.",
+  "@errorInsufficientStockNamed": {
+    "description": "Error cuando el stock es insuficiente para productos especificos",
+    "placeholders": {
+      "products": {
+        "type": "String"
+      }
+    }
+  },
+  "errorInvalidCredentials": "Correo o contraseña incorrectos.",
+  "forgotPasswordConfirmation": "Si la cuenta existe, se ha enviado un correo con instrucciones para restablecer tu contraseña.",
+  "changePasswordSuccess": "Contraseña actualizada exitosamente.",
+  "emailLabel": "Correo Electrónico",
+  "passwordLabel": "Contraseña",
+  "confirmPasswordLabel": "Confirmar Contraseña",
+  "fullNameLabel": "Nombre Completo",
+  "phoneLabel": "Teléfono",
+  "documentTypeLabel": "Tipo de Documento",
+  "documentNumberLabel": "Número de Documento",
+  "addressLabel": "Dirección",
+  "currentPasswordLabel": "Contraseña Actual",
+  "newPasswordLabel": "Nueva Contraseña",
+  "confirmNewPasswordLabel": "Confirmar Nueva Contraseña",
+  "createAccountAction": "Crear Cuenta",
+  "loginAction": "Ingresar",
+  "sendResetInstructionsAction": "Enviar Instrucciones",
+  "changePasswordAction": "Cambiar Contraseña",
+  "alreadyHaveAccount": "¿Ya tienes una cuenta? Inicia sesión",
+  "dontHaveAccount": "¿No tienes una cuenta? Regístrate",
+  "forgotPasswordLink": "¿Olvidaste tu contraseña?",
+  "verificationCheckboxLabel": "No soy un robot",
+  "verificationSuccess": "Verificación completada",
+  "verificationFailed": "Error de verificación",
+  "verifying": "Verificando...",
+  "backToLogin": "Volver a Iniciar Sesión",
+  "docTypeCedula": "Cédula",
+  "docTypeRuc": "RUC",
+  "docTypePassport": "Pasaporte",
+  "resetPasswordTitle": "Restablecer Contraseña",
+  "validationEmailRequired": "El correo es obligatorio.",
+  "validationEmailInvalid": "Correo electrónico inválido.",
+  "validationPasswordRequired": "La contraseña es obligatoria.",
+  "validationPasswordMinLength": "La contraseña debe tener al menos 6 caracteres.",
+  "validationPasswordsDoNotMatch": "Las contraseñas no coinciden.",
+  "validationCurrentPasswordRequired": "Debes ingresar tu contraseña actual para continuar.",
+  "validationFullNameRequired": "El nombre completo es obligatorio y debe tener entre 1 y 100 caracteres.",
+  "validationPhoneRequired": "El teléfono de contacto es obligatorio.",
+  "validationPhoneInvalid": "El teléfono de contacto debe tener formato ecuatoriano (+593 seguido de 9 dígitos).",
+  "validationDocTypeInvalid": "El tipo de documento debe ser CEDULA, PASSPORT o RUC.",
+  "validationDocNumberRequired": "El número de documento es obligatorio.",
+  "validationCedulaInvalid": "La cédula debe contener exactamente 10 dígitos numéricos.",
+  "validationRucInvalid": "El RUC debe contener exactamente 13 dígitos numéricos.",
+  "validationPassportInvalid": "El pasaporte debe contener entre 5 y 20 caracteres alfanuméricos.",
+  "validationDocNumberInvalid": "El número de documento no es válido para el tipo seleccionado.",
+  "validationAddressRequired": "La dirección es obligatoria y debe tener entre 1 y 200 caracteres.",
+  "validationAddressMaxLength": "La dirección no puede exceder los 200 caracteres.",
+  "errorEmailAlreadyInUse": "El correo ya se encuentra registrado.",
+  "errorInvalidProfileData": "Los datos del perfil no son válidos.",
+  "errorCurrentPasswordIncorrect": "La contraseña actual ingresada es incorrecta.",
+  "errorVerifyCurrentPassword": "Error al verificar la contraseña actual.",
+  "errorUpdatePassword": "Error al actualizar la contraseña.",
+  "errorCompleteProfile": "Error al completar el perfil.",
+  "errorNoActiveSession": "No hay una sesión activa o correo disponible para reautenticar.",
+  "errorSendResetEmail": "No se pudo enviar el correo de recuperación. Intenta nuevamente.",
+  "editProfileTitle": "Editar Perfil",
+  "profileEmailNotice": "El correo electrónico no es editable.",
+  "editProfileAction": "Editar Perfil",
+  "saveChangesAction": "Guardar Cambios",
+  "changePhotoAction": "Cambiar Foto",
+  "uploadingPhoto": "Subiendo imagen...",
+  "profileUpdateSuccess": "Perfil actualizado exitosamente.",
+  "noProfileData": "No se pudo cargar la información del perfil.",
+  "savingProfile": "Guardando...",
+  "profileDetailsTitle": "Información Personal",
+  "profileSectionContact": "Contacto y Domicilio",
+  "profileSectionIdentity": "Identificación",
+  "petsListTitle": "Mis Mascotas",
+  "addPetAction": "Registrar Mascota",
+  "emptyPetsMessage": "No tienes mascotas registradas aún.",
+  "petNameLabel": "Nombre de la mascota",
+  "petSpeciesLabel": "Especie",
+  "petBreedLabel": "Raza",
+  "petSexLabel": "Sexo",
+  "petReproductiveStatusLabel": "Estado reproductivo",
+  "petBirthDateLabel": "Fecha de nacimiento",
+  "petAgeLabel": "Edad aproximada",
+  "petAgeYears": "Años",
+  "petAgeMonths": "Meses",
+  "petAgeCalculationNotice": "Puedes indicar la fecha exacta o ingresar los años y meses aproximados.",
+  "petAllergiesLabel": "Alergias o condiciones médicas",
+  "petSexMale": "Macho",
+  "petSexFemale": "Hembra",
+  "petReproductiveIntact": "Entero / Intacto",
+  "petReproductiveNeutered": "Castrado / Esterilizado",
+  "petReproductiveUnknown": "Desconocido",
+  "petSpeciesDog": "Perro",
+  "petSpeciesCat": "Gato",
+  "petSpeciesBird": "Ave",
+  "petSpeciesOther": "Otro",
+  "petCreateSuccess": "Mascota registrada exitosamente.",
+  "petUpdateSuccess": "Datos de la mascota actualizados exitosamente.",
+  "petDeactivateAction": "Dar de baja",
+  "petDeactivateTitle": "Dar de baja mascota",
+  "petDeactivateConfirm": "¿Confirmas la baja definitiva de esta mascota?",
+  "petDeactivateNotice": "Esta acción cancelará automáticamente cualquier cita futura programada.",
+  "petDeactivateAffectedAppointments": "Citas activas que serán canceladas:",
+  "petDeactivateNoAppointments": "No tiene citas pendientes ni confirmadas programadas.",
+  "petDeactivateSuccess": "Mascota dada de baja exitosamente.",
+  "petStatusActive": "Activa",
+  "petStatusDeactivated": "Dada de baja",
+  "petDetailTitle": "Ficha de la Mascota",
+  "petEditAction": "Editar Datos",
+  "petPhotoAction": "Cambiar Foto",
+  "savingPet": "Guardando...",
+  "loadingPets": "Cargando mascotas...",
+  "petLoadingPreview": "Verificando citas programadas...",
+  "dateFormatHint": "AAAA-MM-DD",
+  "appointmentItemSummary": "{service} - {date}",
+  "@appointmentItemSummary": {
+    "description": "Resumen de servicio y fecha",
+    "placeholders": {
+      "service": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "adminServicesTitle": "Catálogo de Servicios",
+  "addServiceAction": "Nuevo Servicio",
+  "editServiceAction": "Editar Servicio",
+  "serviceNameLabel": "Nombre del servicio",
+  "serviceDescriptionLabel": "Descripción",
+  "serviceBasePriceLabel": "Precio Base (USD)",
+  "serviceFinalPriceLabel": "Precio Final con Impuestos",
+  "serviceIceLabel": "ICE (Puntos Básicos)",
+  "serviceDurationLabel": "Duración Estimada (minutos)",
+  "serviceIsClinicalLabel": "¿Es Servicio Clínico?",
+  "serviceIsActiveLabel": "¿Servicio Activo?",
+  "serviceActivateAction": "Activar",
+  "serviceDeactivateAction": "Desactivar",
+  "serviceSaveSuccess": "Servicio guardado exitosamente.",
+  "serviceStatusActive": "Activo",
+  "serviceStatusInactive": "Inactivo",
+  "serviceClinicalBadge": "Clínico",
+  "serviceGeneralBadge": "General",
+  "serviceDurationSummary": "{minutes} min",
+  "@serviceDurationSummary": {
+    "description": "Duración en minutos",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "servicePriceSummary": "Base: ${base} · Final: ${finalPrice}",
+  "@servicePriceSummary": {
+    "description": "Resumen de precio base y final",
+    "placeholders": {
+      "base": {
+        "type": "String"
+      },
+      "finalPrice": {
+        "type": "String"
+      }
+    }
+  },
+  "emptyServicesMessage": "No hay servicios registrados en el catálogo.",
+  "servicesLoadErrorMessage": "No se pudo cargar el catálogo de servicios.",
+  "loadingServices": "Cargando servicios...",
+  "savingService": "Guardando servicio...",
+  "serviceConfirmDeactivate": "¿Estás seguro de desactivar este servicio del catálogo?",
+  "serviceConfirmActivate": "¿Estás seguro de activar este servicio en el catálogo?",
+  "bookingTitle": "Agendamiento de Cita",
+  "bookingStepService": "1. Servicio",
+  "bookingStepPet": "2. Mascota",
+  "bookingStepDateTime": "3. Fecha y Horario",
+  "bookingStepConfirm": "4. Confirmación",
+  "selectServiceTitle": "Selecciona un Servicio",
+  "selectPetTitle": "Selecciona tu Mascota",
+  "selectDateTimeTitle": "Selecciona Fecha y Horario",
+  "confirmBookingTitle": "Confirmar Agendamiento",
+  "clientNotesLabel": "Notas o síntomas (opcional, máx. 250 caracteres)",
+  "confirmBookingAction": "Confirmar Cita",
+  "bookingSuccessMessage": "¡Cita agendada exitosamente!",
+  "noAvailableSlotsMessage": "No hay franjas horarias disponibles para la fecha seleccionada.",
+  "noOperatingDayMessage": "Día no laborable según el horario de atención.",
+  "slotTakenNotice": "La franja seleccionada ya no está disponible. Por favor, selecciona otra.",
+  "noActivePetsMessage": "No tienes mascotas activas disponibles para agendar.",
+  "bookingPriceEstimatedNotice": "El precio mostrado es informativo; el valor definitivo será registrado al confirmar la cita.",
+  "bookingBasePriceSummary": "Precio base: ${amount}",
+  "@bookingBasePriceSummary": {
+    "description": "Precio base en resumen",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "bookingEstimatedTaxesSummary": "Impuestos estimados: ${amount}",
+  "@bookingEstimatedTaxesSummary": {
+    "description": "Impuestos estimados en resumen",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "bookingTotalEstimatedSummary": "Total estimado a pagar: ${amount}",
+  "@bookingTotalEstimatedSummary": {
+    "description": "Total estimado en resumen",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "offlineWarning": "Sin conexión a internet. No se puede realizar el agendamiento.",
+  "notesCharCount": "{current} / 250",
+  "@notesCharCount": {
+    "description": "Contador de caracteres de notas",
+    "placeholders": {
+      "current": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAction": "Elegir",
+  "selectedBadge": "Seleccionado",
+  "selectDateLabel": "Seleccionar fecha",
+  "availableSlotsTitle": "Horarios Disponibles",
+  "noSlotsAvailableNotice": "No hay horarios disponibles para este día.",
+  "serviceSummaryLabel": "Servicio",
+  "petSummaryLabel": "Mascota",
+  "dateTimeSummaryLabel": "Fecha y Horario",
+  "notesSummaryLabel": "Notas",
+  "confirmBookingNotice": "Al confirmar, la reserva se registrará de forma definitiva.",
+  "appointmentCodeLabel": "Código de cita",
+  "backToHomeAction": "Volver al Inicio",
+  "nextStepAction": "Siguiente",
+  "previousStepAction": "Anterior",
+  "stepServiceTitle": "Servicio",
+  "stepPetTitle": "Mascota",
+  "stepDateTimeTitle": "Fecha y Hora",
+  "stepConfirmTitle": "Confirmar",
+  "appointmentsHistoryTitle": "Historial de Citas",
+  "upcomingAppointmentsTab": "Próximas",
+  "pastAppointmentsTab": "Pasadas",
+  "upcomingAppointmentsTitle": "Citas Próximas",
+  "pastAppointmentsTitle": "Citas Pasadas",
+  "noUpcomingAppointments": "No tienes citas próximas programadas.",
+  "noPastAppointments": "No tienes citas en tu historial.",
+  "noAppointmentsFound": "No tienes citas registradas.",
+  "appointmentStatusPending": "Pendiente",
+  "appointmentStatusConfirmed": "Confirmada",
+  "appointmentStatusCompleted": "Completada",
+  "appointmentStatusCancelled": "Cancelada",
+  "appointmentDateLabel": "Fecha",
+  "appointmentTimeLabel": "Horario",
+  "appointmentPetLabel": "Mascota",
+  "appointmentServiceLabel": "Servicio",
+  "appointmentStatusLabel": "Estado",
+  "appointmentBasePrice": "Precio base: ${amount}",
+  "@appointmentBasePrice": {
+    "description": "Precio base en historial de citas",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "appointmentFinalPriceWithTaxes": "Precio final con impuestos: ${amount}",
+  "@appointmentFinalPriceWithTaxes": {
+    "description": "Precio final con impuestos en historial de citas",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "cancelAppointmentAction": "Cancelar Cita",
+  "cancelAppointmentDialogTitle": "¿Deseas cancelar esta cita?",
+  "cancelAppointmentDialogMessage": "Esta acción liberará el horario reservado y cancelará la cita de forma definitiva. No podrás deshacer esta acción.",
+  "confirmCancelAction": "Confirmar Cancelación",
+  "keepAppointmentAction": "Mantener Cita",
+  "appointmentCancelledSuccess": "La cita ha sido cancelada exitosamente.",
+  "cancellingAppointment": "Cancelando...",
+  "loadMoreAppointmentsAction": "Cargar más citas",
+  "catalogTitle": "Catálogo de Productos",
+  "searchProductHint": "Buscar producto...",
+  "categoryAll": "Todos",
+  "categoryFood": "Alimentos",
+  "categoryMedicine": "Medicinas",
+  "categoryAccessories": "Accesorios",
+  "categoryHygiene": "Higiene",
+  "stockAvailable": "Disponible",
+  "stockOutOfStock": "Agotado",
+  "priceBaseFormatted": "Base: ${amount}",
+  "@priceBaseFormatted": {
+    "description": "Precio base formateado",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "priceWithTaxesFormatted": "Con impuestos: ${amount}",
+  "@priceWithTaxesFormatted": {
+    "description": "Precio con impuestos formateado",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "taxIceFormatted": "ICE ({percent}%): ${amount}",
+  "@taxIceFormatted": {
+    "description": "Desglose de impuesto ICE",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "taxIvaFormatted": "IVA ({percent}%): ${amount}",
+  "@taxIvaFormatted": {
+    "description": "Desglose de impuesto IVA",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "taxIceOnlyLabel": "ICE aplicable",
+  "taxIvaOnlyLabel": "IVA aplicable",
+  "taxBreakdownTitle": "Desglose de Precios",
+  "productDetailTitle": "Detalle del Producto",
+  "requestProductAction": "Solicitar Producto",
+  "requestProductSuccess": "Solicitud enviada exitosamente.",
+  "requestingProduct": "Enviando solicitud...",
+  "myRequestsTitle": "Mis Solicitudes",
+  "chatScreenTitle": "Chat con la Veterinaria",
+  "chatPurgeAction": "Vaciar conversación",
+  "chatPurgeTitle": "Vaciar conversación",
+  "chatPurgeBody": "¿Estás seguro de que deseas eliminar todos los mensajes? El historial desaparecerá también para el personal.",
+  "chatPurgeConfirm": "Vaciar",
+  "chatDeleteMessageTitle": "Eliminar mensaje",
+  "chatDeleteMessageBody": "¿Deseas eliminar este mensaje? Desaparecerá de la conversación sin dejar registro sustitutorio.",
+  "chatDeleteMessageConfirm": "Eliminar",
+  "chatDeleteOwnMessageSemantics": "Eliminar mensaje propio",
+  "chatBlockedNotice": "Un administrador ha bloqueado tu envío de mensajes en esta conversación. Puedes seguir leyendo lo que ya escribiste y lo que el personal te escriba.",
+  "chatBlockedHint": "No puedes escribir en esta conversación",
+  "chatMessagePlaceholder": "Escribe un mensaje...",
+  "chatEmptyConversation": "No hay mensajes aún. Escribe para comunicarte con el personal.",
+  "chatAttachImageAction": "Adjuntar imagen",
+  "chatSendMessageAction": "Enviar mensaje",
+  "errorChatBlocked": "No puedes enviar mensajes en esta conversación porque un administrador lo ha bloqueado.",
+  "errorChatMessageEmpty": "El mensaje no puede estar vacío.",
+  "errorChatMessageTooLong": "El mensaje no puede exceder los 4000 caracteres.",
+  "chatImageAttachmentLabel": "Imagen adjunta",
+  "chatImageLoadError": "No se pudo cargar la imagen adjunta.",
+  "chatImageOpenAction": "Ver la imagen a tamaño completo",
+  "requestClientLabel": "Cliente: {name}",
+  "@requestClientLabel": {
+    "description": "Nombre del cliente que generó la solicitud de producto",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "emptyCatalogMessage": "No se encontraron productos disponibles.",
+  "emptyRequestsMessage": "No tienes solicitudes de productos registradas.",
+  "requestStatusPendingDispatch": "Pendiente de despacho",
+  "requestStatusReadyForPickup": "Listo para retiro",
+  "requestStatusFinalized": "Finalizada",
+  "requestStatusCancelled": "Cancelada",
+  "cancelRequestAction": "Cancelar Solicitud",
+  "cancelRequestTitle": "Cancelar Solicitud",
+  "cancelRequestConfirm": "¿Confirmas la cancelación de esta solicitud de producto?",
+  "cancelRequestNotice": "El producto volverá a estar disponible en el catálogo.",
+  "cancelRequestSuccess": "Solicitud cancelada exitosamente.",
+  "cancelRequestItemsHeader": "Productos que se cancelarán:",
+  "requestItemsHeader": "Productos solicitados",
+  "requestTotalLabel": "Total de la solicitud",
+  "cancellingRequest": "Cancelando...",
+  "tabCatalog": "Catálogo",
+  "tabMyRequests": "Mis Solicitudes",
+  "viewDetailsAction": "Ver Detalle",
+  "productCategoryLabel": "Categoría",
+  "productDescriptionLabel": "Descripción",
+  "quantityLabel": "Cantidad: {quantity}",
+  "@quantityLabel": {
+    "description": "Cantidad de unidades",
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentSummaryTitle": "Resumen a Pagar",
+  "paymentSummaryNotice": "Los descuentos y recargos finales se aplican y reflejan en la proforma emitida por el establecimiento.",
+  "paymentSummaryEmpty": "No tienes citas completadas ni solicitudes pendientes de facturación.",
+  "paymentSummarySubtotal": "Subtotal: ${amount}",
+  "@paymentSummarySubtotal": {
+    "description": "Subtotal del resumen a pagar",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentSummaryTotalIce": "Total ICE: ${amount}",
+  "@paymentSummaryTotalIce": {
+    "description": "Total ICE del resumen a pagar",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentSummaryTotalIva": "Total IVA ({percent}%): ${amount}",
+  "@paymentSummaryTotalIva": {
+    "description": "Total IVA del resumen a pagar",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentSummaryEstimatedTotal": "Total Estimado: ${amount}",
+  "@paymentSummaryEstimatedTotal": {
+    "description": "Total estimado del resumen a pagar",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentSummaryOpenAction": "Resumen a pagar",
+  "@paymentSummaryOpenAction": {
+    "description": "Boton para abrir el resumen a pagar de la zona de facturacion"
+  },
+  "paymentSummaryIvaRateLabel": "IVA ({rate}%):",
+  "@paymentSummaryIvaRateLabel": {
+    "description": "Etiqueta de IVA con porcentaje para el resumen a pagar",
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentSummaryEstimatedTotalLabel": "Total estimado",
+  "@paymentSummaryEstimatedTotalLabel": {
+    "description": "Etiqueta de total estimado para el resumen a pagar"
+  },
+  "cartTitle": "Mi Carrito",
+  "cartEmptyMessage": "No tienes solicitudes activas ni citas pendientes de pago.",
+  "cartNoticeAdjustments": "Los descuentos y recargos finales se aplican y reflejan en la proforma emitida por el establecimiento.",
+  "cartPayableTodayLabel": "A pagar hoy",
+  "cartPayableToday": "A pagar hoy: ${amount}",
+  "@cartPayableToday": {
+    "description": "Total a pagar hoy en el carrito",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "cartAccumulatedTotalLabel": "Total acumulado",
+  "cartAccumulatedTotal": "Total acumulado: ${amount}",
+  "@cartAccumulatedTotal": {
+    "description": "Total acumulado en el carrito",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "cartProductsSection": "Productos Solicitados",
+  "cartAppointmentsSection": "Citas Agendadas",
+  "cartRequestGroupHeader": "Solicitud #{id}",
+  "@cartRequestGroupHeader": {
+    "description": "Cabecera de grupo de solicitud",
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "cartQuantity": "Cantidad: {quantity}",
+  "@cartQuantity": {
+    "description": "Cantidad del producto",
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      }
+    }
+  },
+  "cartUnitPrice": "Precio unitario: ${amount}",
+  "@cartUnitPrice": {
+    "description": "Precio unitario",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "cartPriceWithTaxes": "Precio con impuestos: ${amount}",
+  "@cartPriceWithTaxes": {
+    "description": "Precio con impuestos",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "cartSubtotal": "Subtotal: ${amount}",
+  "@cartSubtotal": {
+    "description": "Subtotal de linea",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "cartAppointmentDateTime": "Fecha: {date} - Horario: {slot}",
+  "@cartAppointmentDateTime": {
+    "description": "Fecha y horario de cita en carrito",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "slot": {
+        "type": "String"
+      }
+    }
+  },
+  "cartAppointmentPet": "Mascota: {pet}",
+  "@cartAppointmentPet": {
+    "description": "Mascota de la cita en carrito",
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "cartAppointmentService": "Servicio: {service}",
+  "@cartAppointmentService": {
+    "description": "Servicio de la cita en carrito",
+    "placeholders": {
+      "service": {
+        "type": "String"
+      }
+    }
+  },
+  "cartAppointmentPrice": "Precio con impuestos: ${amount}",
+  "@cartAppointmentPrice": {
+    "description": "Precio con impuestos de la cita en carrito",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "navCart": "Carrito",
+  "myProformasTitle": "Mis Proformas",
+  "emptyProformasMessage": "No tienes proformas emitidas aún.",
+  "proformaNumberLabel": "Proforma: {number}",
+  "@proformaNumberLabel": {
+    "description": "Número formal de proforma",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "proformaDateLabel": "Fecha de emisión",
+  "proformaStatusDelivered": "Entregada",
+  "proformaStatusFinalized": "Finalizada",
+  "proformaStatusVoided": "Anulada",
+  "proformaStatusDraft": "Borrador",
+  "proformaVoidReasonLabel": "Motivo de anulación: {reason}",
+  "@proformaVoidReasonLabel": {
+    "description": "Motivo de anulación",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "downloadPdfAction": "Descargar PDF",
+  "downloadingPdf": "Descargando PDF...",
+  "pdfDownloadSuccess": "PDF descargado correctamente.",
+  "pdfDownloadError": "Error al descargar el archivo PDF.",
+  "tabPaymentSummary": "Resumen a Pagar",
+  "tabMyProformas": "Mis Proformas",
+  "proformaDetailTitle": "Detalle de Proforma",
+  "proformaDetailWithId": "Detalle de Proforma: {id}",
+  "@proformaDetailWithId": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "proformaItemsTitle": "Conceptos Facturados",
+  "proformaAdjustmentsTitle": "Descuentos y Recargos",
+  "proformaAdjustmentDiscount": "Descuento",
+  "proformaAdjustmentSurcharge": "Recargo",
+  "moneyAmount": "${amount}",
+  "@moneyAmount": {
+    "description": "Un importe con el símbolo de moneda. El símbolo vive aquí y en ningún otro sitio (TRD v1.25 §1.3.5, AUD-312)",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "moneyAmountNegative": "-${amount}",
+  "@moneyAmountNegative": {
+    "description": "Un importe que resta, como un descuento. Lleva el mismo símbolo que moneyAmount",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "moneyAmountPositive": "+${amount}",
+  "@moneyAmountPositive": {
+    "description": "Un importe que suma, como un recargo. Lleva el mismo símbolo que moneyAmount",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "proformaSubtotalLabel": "Subtotal",
+  "proformaDiscountLabel": "Descuentos",
+  "proformaSurchargeLabel": "Recargos",
+  "proformaTaxableBaseLabel": "Base Imponible",
+  "proformaIceLabel": "ICE",
+  "proformaIvaLabel": "IVA",
+  "proformaTotalLabel": "Total",
+  "accountDeactivationTitle": "Desactivación de Cuenta",
+  "accountDeactivationSubtitle": "Solicitud de baja voluntaria de cuenta",
+  "accountDeactivationNotice": "Antes de continuar, revisa los conceptos que serán cancelados y los que se conservarán en el histórico de la veterinaria.",
+  "deactivationGroupToCancelTitle": "Conceptos a Cancelar",
+  "deactivationGroupToCancelNotice": "Las siguientes citas activas y solicitudes no facturadas serán canceladas de forma definitiva. Estos conceptos no se restaurarán si la cuenta se reactiva en el futuro.",
+  "deactivationGroupToCancelEmpty": "No tienes citas ni solicitudes activas por cancelar.",
+  "deactivationGroupToRetainTitle": "Registros a Conservar",
+  "deactivationGroupToRetainNotice": "Las siguientes citas completadas y solicitudes facturadas permanecerán archivadas por motivos fiscales y contables.",
+  "deactivationGroupToRetainEmpty": "No tienes registros históricos facturados.",
+  "deactivationReasonCompleted": "Cita completada",
+  "deactivationReasonBilled": "Facturado en proforma",
+  "deactivationUnknownProduct": "Producto no especificado",
+  "deactivationPasswordPrompt": "Por motivos de seguridad, ingresa tu contraseña actual para confirmar la baja:",
+  "confirmDeactivationAction": "Confirmar Desactivación de Cuenta",
+  "deactivatingAccount": "Procesando baja de cuenta...",
+  "accountDeactivatedSuccess": "Tu cuenta ha sido desactivada exitosamente.",
+  "adminProductsTitle": "Gestión de Productos",
+  "addProductAction": "Nuevo Producto",
+  "editProductAction": "Editar Producto",
+  "productNameLabel": "Nombre del producto",
+  "productCategoryPrompt": "Selecciona una categoría",
+  "productInitialStockLabel": "Stock inicial",
+  "lowStockAlert": "Stock Bajo",
+  "adjustStockAction": "Ajustar Stock",
+  "inventoryAdjustmentTitle": "Ajuste de Inventario",
+  "currentStockLabel": "Stock actual",
+  "stockDeltaLabel": "Ajuste de unidades (positivo o negativo)",
+  "stockDeltaHelp": "Ingresa un número entero positivo para añadir existencias o negativo para restar.",
+  "resultingStockLabel": "Stock resultante: {stock}",
+  "@resultingStockLabel": {
+    "description": "Stock resultante tras ajuste",
+    "placeholders": {
+      "stock": {
+        "type": "int"
+      }
+    }
+  },
+  "stockAdjustSuccess": "Inventario actualizado exitosamente.",
+  "adjustingStock": "Ajustando...",
+  "adminRequestsTitle": "Cola de Despacho de Solicitudes",
+  "adminRequestLine": "{product} × {quantity}",
+  "@adminRequestLine": {
+    "description": "Una línea de la solicitud en el panel: producto y cantidad (IN-04, CA-AD-61)",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      },
+      "quantity": {
+        "type": "int"
+      }
+    }
+  },
+  "adminRequestDate": "Solicitada el {date}",
+  "@adminRequestDate": {
+    "description": "Fecha de la solicitud en el panel (IN-04)",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "adminRequestTotalBeforeTaxes": "Total de la solicitud, antes de impuestos: ${amount}",
+  "@adminRequestTotalBeforeTaxes": {
+    "description": "Total de la solicitud antes de impuestos; los impuestos se calculan en la proforma (IN-04, FA-09)",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "adminRequestDetailTitle": "Detalle de la solicitud",
+  "adminRequestDetailLine": "Cantidad: {quantity} · Precio acordado: ${unitPrice} · Subtotal: ${subtotal}",
+  "@adminRequestDetailLine": {
+    "description": "Una línea en el detalle de la solicitud, con el precio acordado para auditoría (CA-AD-14)",
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      },
+      "unitPrice": {
+        "type": "String"
+      },
+      "subtotal": {
+        "type": "String"
+      }
+    }
+  },
+  "adminRequestTaxNote": "Los impuestos se calculan en la proforma, con los porcentajes congelados de cada línea.",
+  "filterAll": "Todos los estados",
+  "advanceToReadyAction": "Marcar Listo para Retiro",
+  "advancingRequest": "Actualizando estado...",
+  "requestAdvancedSuccess": "Solicitud actualizada a lista para retiro.",
+  "adminProformasTitle": "Gestión de Proformas",
+  "proformaNewAction": "Nueva Proforma",
+  "proformaSelectClientTitle": "Selecciona un cliente",
+  "proformaPendingConceptsTitle": "Conceptos pendientes",
+  "proformaPendingConceptsSubtitle": "Citas completadas y solicitudes listas para retirar de {name}",
+  "@proformaPendingConceptsSubtitle": {
+    "description": "Subtitulo de la pantalla de conceptos pendientes de facturar",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "proformaNoPendingConcepts": "Este cliente no tiene conceptos pendientes de facturar.",
+  "proformaConceptAppointment": "Cita",
+  "proformaConceptProduct": "Producto",
+  "proformaSelectedTotalLabel": "Total seleccionado",
+  "proformaCreateWithSelection": "Crear proforma con {count} concepto(s)",
+  "@proformaCreateWithSelection": {
+    "description": "Accion que crea el borrador con los conceptos marcados",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proformaAddSelectionAction": "Añadir {count} concepto(s) al borrador",
+  "@proformaAddSelectionAction": {
+    "description": "Accion que incorpora los conceptos marcados a un borrador existente",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proformaAddConceptsAction": "Añadir conceptos",
+  "newProformaAction": "Nueva Proforma",
+  "composeProformaTitle": "Composición de Proforma",
+  "selectClientPrompt": "Selecciona un cliente",
+  "clientDebtSummaryTitle": "Deuda Pendiente del Cliente",
+  "addSelectedItemsAction": "Agregar al Borrador",
+  "setAdjustmentsAction": "Configurar Descuentos / Recargos",
+  "adjustmentConceptLabel": "Concepto del ajuste",
+  "adjustmentTypeLabel": "Tipo de ajuste",
+  "adjustmentPercentLabel": "Porcentaje (%)",
+  "adjustmentAmountLabel": "Monto fijo (USD)",
+  "deliverProformaAction": "Emitir y Entregar",
+  "deliveringProforma": "Generando entrega y PDF...",
+  "proformaDeliveredSuccess": "Proforma entregada exitosamente.",
+  "finalizeProformaAction": "Finalizar Proforma",
+  "finalizingProforma": "Finalizando...",
+  "proformaFinalizedSuccess": "Proforma finalizada exitosamente.",
+  "voidProformaAction": "Anular Proforma",
+  "voidProformaDialogTitle": "Anulación de Proforma",
+  "voidReasonPrompt": "Ingresa el motivo obligatorio de anulación (máximo 300 caracteres):",
+  "voidReasonLabel": "Motivo de anulación",
+  "voidingProforma": "Anulando...",
+  "proformaVoidedSuccess": "Proforma anulada exitosamente.",
+  "adminBillingParametersTitle": "Parámetros de Facturación",
+  "businessNameLabel": "Razón Social",
+  "taxIdLabel": "RUC / Identificación Fiscal",
+  "proformaSeriesLabel": "Serie de Proforma",
+  "ivaBpLabel": "Porcentaje de IVA (Puntos Básicos)",
+  "ivaBpHelper": "{percent} % — 1500 puntos básicos equivalen al 15 %",
+  "@ivaBpHelper": {
+    "description": "Equivalencia en porcentaje del valor escrito en puntos basicos",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "iceIncludedInIvaBaseLabel": "Incluir ICE en la base imponible del IVA",
+  "ivaNoticeFutureOnly": "Los cambios en el porcentaje de IVA se aplicarán exclusivamente a las futuras proformas emitidas.",
+  "saveBillingParamsSuccess": "Parámetros de facturación guardados exitosamente.",
+  "productBasePriceLabel": "Precio Base (USD)",
+  "productIceBpLabel": "ICE (Puntos Básicos)",
+  "productStockLockedNotice": "El stock solo puede definirse al crear el producto. Para modificar existencias utilice Ajuste de Inventario.",
+  "proformaEmptyError": "No se puede entregar una proforma sin ítems.",
+  "deliveryInProgressError": "La proforma ya está en proceso de entrega.",
+  "tooManyItemsError": "La proforma excede el límite máximo de ítems permitidos.",
+  "voidReasonMinLengthError": "El motivo de anulación debe tener al menos 5 caracteres.",
+  "voidReasonMaxLengthError": "El motivo no puede exceder los 300 caracteres.",
+  "adminInventoryTitle": "Control de Inventario",
+  "stockAdjustmentReasonPrompt": "Motivo del ajuste (obligatorio)",
+  "productToggleActiveSuccess": "Estado del producto actualizado.",
+  "noProductsFoundAdmin": "No se encontraron productos en el catálogo.",
+  "noRequestsFoundAdmin": "No hay solicitudes de productos en esta cola.",
+  "noProformasFoundAdmin": "No hay proformas registradas.",
+  "navAdminProducts": "Productos",
+  "navAdminInventory": "Inventario",
+  "navAdminRequests": "Solicitudes",
+  "navAdminProformas": "Proformas",
+  "createProformaDraftAction": "Nuevo Borrador",
+  "saveAction": "Guardar",
+  "savingAction": "Guardando...",
+  "searchPlaceholder": "Buscar...",
+  "productSavedSuccess": "Producto guardado exitosamente.",
+  "productActiveStatusLabel": "Producto Activo",
+  "adminGovernanceUnderConstruction": "Módulo en construcción. La gestión de gobierno y cuentas estará disponible próximamente.",
+  "adminClientsManagementTitle": "Gestión de Clientes",
+  "adminClientsActiveTab": "Clientes Activos",
+  "adminClientsDeactivatedTab": "Cuentas Desactivadas",
+  "adminClientsSearchLabel": "Buscar por nombre o cédula",
+  "adminClientsSearchHint": "Escribe el nombre del cliente...",
+  "adminClientsEmptyActive": "No se encontraron clientes registrados.",
+  "adminClientsEmptyDeactivated": "No hay cuentas desactivadas actualmente.",
+  "adminClientsStatusDeactivated": "Estado: DESACTIVADA",
+  "adminClientsReactivateTitle": "Reactivar Cuenta",
+  "adminClientsReactivateContent": "¿Deseas reactivar la cuenta de {fullName}?",
+  "@adminClientsReactivateContent": {
+    "placeholders": {
+      "fullName": {
+        "type": "String"
+      }
+    }
+  },
+  "adminClientsReactivateConfirm": "Reactivar",
+  "adminClientsTooltipView": "Ver Ficha",
+  "adminClientsSemanticsView": "Ver ficha de cliente",
+  "adminClientsSemanticsReactivate": "Reactivar cuenta de usuario",
+  "adminClientDetailTitle": "Ficha de Cliente: {fullName}",
+  "@adminClientDetailTitle": {
+    "placeholders": {
+      "fullName": {
+        "type": "String"
+      }
+    }
+  },
+  "adminClientIdentityTitle": "Datos de Identidad (Sólo Lectura)",
+  "adminClientFieldFullName": "Nombre Completo",
+  "adminClientFieldDocument": "Documento de Identidad",
+  "adminClientFieldEmail": "Correo Electrónico",
+  "adminClientFieldPhone": "Teléfono de Contacto",
+  "adminClientFieldAddress": "Dirección Domiciliaria",
+  "adminClientFieldRole": "Rol en el Sistema",
+  "adminClientAddressNotRegistered": "No registrada",
+  "adminClientPetsRegisteredTitle": "Mascotas Registradas ({count})",
+  "@adminClientPetsRegisteredTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminClientNoPets": "El cliente no tiene mascotas registradas.",
+  "adminClientTooltipBack": "Volver al listado",
+  "adminClientSemanticsBack": "Volver al listado de clientes",
+  "adminPetCorrectionTitle": "Corregir Ficha de {name}",
+  "@adminPetCorrectionTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminPetCorrectionNote": "Nota: El personal sólo está autorizado a rectificar el sexo y estado reproductivo de la mascota.",
+  "adminPetCorrectionSexLabel": "Sexo",
+  "adminPetCorrectionReproductiveLabel": "Estado Reproductivo",
+  "adminPetCorrectionSexMale": "Macho (MALE)",
+  "adminPetCorrectionSexFemale": "Hembra (FEMALE)",
+  "adminPetCorrectionReproductiveIntact": "Fértil / Entero (INTACT)",
+  "adminPetCorrectionReproductiveNeutered": "Esterilizado / Castrado (NEUTERED)",
+  "adminPetCorrectionReproductiveUnknown": "Desconocido (UNKNOWN)",
+  "adminPetCorrectionSave": "Guardar Corrección",
+  "adminPetCorrectionAction": "Corregir",
+  "adminPetCorrectionTooltip": "Corregir Sexo/Estado",
+  "adminPetCorrectionSemantics": "Corregir sexo y estado reproductivo de la mascota",
+  "adminPetSpeciesLabel": "Especie: {species} | Raza: {breed}",
+  "@adminPetSpeciesLabel": {
+    "placeholders": {
+      "species": {
+        "type": "String"
+      },
+      "breed": {
+        "type": "String"
+      }
+    }
+  },
+  "adminPetSexReproductiveLabel": "Sexo: {sex} | Reproductivo: {reproductiveStatus}",
+  "@adminPetSexReproductiveLabel": {
+    "placeholders": {
+      "sex": {
+        "type": "String"
+      },
+      "reproductiveStatus": {
+        "type": "String"
+      }
+    }
+  },
+  "adminPetBreedNotSpecified": "No especificada",
+  "adminBlockAvailabilityTitle": "Bloquear Disponibilidad",
+  "adminBlockAction": "Bloquear",
+  "adminRescheduleAppointmentTitle": "Reagendar Cita",
+  "adminRescheduleAction": "Reagendar",
+  "adminAgendaTitle": "Agenda Administrativa",
+  "adminStatusFilterLabel": "Estado",
+  "adminConfirmAction": "Confirmar",
+  "adminCompleteAction": "Completar",
+  "adminViewModeWeek": "Semanal",
+  "adminViewModeMonth": "Mensual",
+  "adminStatusFilterAll": "Todos los estados",
+  "adminStatusFilterPending": "Pendientes",
+  "adminStatusFilterConfirmed": "Confirmadas",
+  "adminStatusFilterCompleted": "Completadas",
+  "adminStatusFilterCancelled": "Canceladas",
+  "clinicalEntryAnnulmentTitle": "Anulación de Entrada Clínica",
+  "clinicalEntryAnnulAction": "Anular Registro",
+  "clinicalViewVersionsAction": "Ver Versiones",
+  "clinicalCorrectAction": "Corregir",
+  "clinicalConsultationAnnulmentTitle": "Anulación de Registro Clínico",
+  "clinicalConfirmAnnulmentAction": "Confirmar Anulación",
+  "clinicalPrescribeTreatmentTitle": "Prescribir Tratamiento",
+  "clinicalAddPrescriptionLineAction": "Añadir Línea",
+  "clinicalPrescribeMedicationAction": "Prescribir Medicamento",
+  "clinicalUploadAttachmentAction": "Subir Archivo Adjunto",
+  "clinicalUpdatePetPhotoAction": "Actualizar Foto Mascota",
+  "agendaBlockDateLabel": "Fecha (YYYY-MM-DD)",
+  "@agendaBlockDateLabel": {
+    "description": "Etiqueta de fecha del bloqueo"
+  },
+  "agendaBlockDateHint": "2026-09-02",
+  "@agendaBlockDateHint": {
+    "description": "Ejemplo de fecha de bloqueo"
+  },
+  "agendaBlockSlotLabel": "Franja horaria (opcional, ej. 09:00)",
+  "@agendaBlockSlotLabel": {
+    "description": "Etiqueta de franja del bloqueo"
+  },
+  "agendaBlockSlotHint": "Dejar en blanco para bloquear día completo",
+  "@agendaBlockSlotHint": {
+    "description": "Ayuda de franja del bloqueo"
+  },
+  "agendaBlockReasonLabel": "Motivo del bloqueo",
+  "@agendaBlockReasonLabel": {
+    "description": "Etiqueta de motivo del bloqueo"
+  },
+  "agendaBlockReasonHint": "Mantenimiento, feriado o ausencia médica",
+  "@agendaBlockReasonHint": {
+    "description": "Ejemplos de motivo de bloqueo"
+  },
+  "agendaRescheduleDateLabel": "Nueva Fecha (YYYY-MM-DD)",
+  "@agendaRescheduleDateLabel": {
+    "description": "Nueva fecha al reagendar"
+  },
+  "agendaRescheduleSlotLabel": "Nueva Franja (HH:mm)",
+  "@agendaRescheduleSlotLabel": {
+    "description": "Nueva franja al reagendar"
+  },
+  "agendaCancelAppointmentTooltip": "Cancelar Cita",
+  "@agendaCancelAppointmentTooltip": {
+    "description": "Tooltip de cancelar cita"
+  },
+  "agendaCancelConflictSemantic": "Cancelar cita en conflicto",
+  "@agendaCancelConflictSemantic": {
+    "description": "Etiqueta accesible de cancelar"
+  },
+  "agendaRescheduleAppointmentTooltip": "Reagendar Cita",
+  "@agendaRescheduleAppointmentTooltip": {
+    "description": "Tooltip de reagendar cita"
+  },
+  "agendaRescheduleConflictSemantic": "Reagendar cita en conflicto",
+  "@agendaRescheduleConflictSemantic": {
+    "description": "Etiqueta accesible de reagendar"
+  },
+  "agendaPreviousDayTooltip": "Día anterior",
+  "@agendaPreviousDayTooltip": {
+    "description": "Navegacion al dia anterior"
+  },
+  "agendaPreviousDaySemantic": "Día anterior",
+  "@agendaPreviousDaySemantic": {
+    "description": "Etiqueta accesible del dia anterior"
+  },
+  "agendaNextDayTooltip": "Día siguiente",
+  "@agendaNextDayTooltip": {
+    "description": "Navegacion al dia siguiente"
+  },
+  "agendaNextDaySemantic": "Día siguiente",
+  "@agendaNextDaySemantic": {
+    "description": "Etiqueta accesible del dia siguiente"
+  },
+  "clinicalAnnulReasonLabel": "Motivo obligatorio de anulación *",
+  "@clinicalAnnulReasonLabel": {
+    "description": "Motivo de anulacion clinica"
+  },
+  "clinicalMedicationLabel": "Medicamento *",
+  "@clinicalMedicationLabel": {
+    "description": "Medicamento prescrito"
+  },
+  "clinicalDoseLabel": "Dosis * (ej: 10 mg/kg)",
+  "@clinicalDoseLabel": {
+    "description": "Dosis prescrita"
+  },
+  "clinicalRouteLabel": "Vía de administración *",
+  "@clinicalRouteLabel": {
+    "description": "Via de administracion"
+  },
+  "clinicalDurationLabel": "Duración * (ej: 7 días)",
+  "@clinicalDurationLabel": {
+    "description": "Duracion del tratamiento"
+  },
+  "clinicalModalityLabel": "Modalidad *",
+  "@clinicalModalityLabel": {
+    "description": "Modalidad del tratamiento"
+  },
+  "clinicalAnnulRecordTooltip": "Anular registro clínico",
+  "@clinicalAnnulRecordTooltip": {
+    "description": "Tooltip de anulacion"
+  },
+  "clinicalAnnulRecordSemantic": "Anular registro clínico",
+  "@clinicalAnnulRecordSemantic": {
+    "description": "Etiqueta accesible de anulacion"
+  },
+  "clinicalDeferTooltip": "Aplazar o cerrar el registro",
+  "@clinicalDeferTooltip": {
+    "description": "Tooltip de aplazamiento"
+  },
+  "clinicalDeferSemantic": "Aplazar formulario",
+  "@clinicalDeferSemantic": {
+    "description": "Etiqueta accesible de aplazamiento"
+  },
+  "clinicalDeferAction": "Aplazar",
+  "@clinicalDeferAction": {
+    "description": "Accion de aplazar"
+  },
+  "clinicalReasonLabel": "Motivo de consulta *",
+  "@clinicalReasonLabel": {
+    "description": "Motivo de consulta"
+  },
+  "clinicalCurrentIllnessLabel": "Enfermedad actual (opcional)",
+  "@clinicalCurrentIllnessLabel": {
+    "description": "Enfermedad actual"
+  },
+  "clinicalBackgroundLabel": "Antecedentes médicos (opcional)",
+  "@clinicalBackgroundLabel": {
+    "description": "Antecedentes medicos"
+  },
+  "clinicalDiagnosisLabel": "Diagnóstico",
+  "@clinicalDiagnosisLabel": {
+    "description": "Diagnostico"
+  },
+  "clinicalDiagnosisTypeLabel": "Tipo de Diagnóstico",
+  "@clinicalDiagnosisTypeLabel": {
+    "description": "Tipo de diagnostico"
+  },
+  "clinicalDiagnosisPresumptive": "Presuntivo",
+  "@clinicalDiagnosisPresumptive": {
+    "description": "Diagnostico presuntivo"
+  },
+  "clinicalDiagnosisDefinitive": "Definitivo",
+  "@clinicalDiagnosisDefinitive": {
+    "description": "Diagnostico definitivo"
+  },
+  "clinicalOwnerInstructionsLabel": "Indicaciones para el propietario (opcional)",
+  "@clinicalOwnerInstructionsLabel": {
+    "description": "Indicaciones al propietario"
+  },
+  "clinicalTemperatureLabel": "T° (°C)",
+  "@clinicalTemperatureLabel": {
+    "description": "Temperatura"
+  },
+  "clinicalTemperatureHint": "ej: 38.5",
+  "@clinicalTemperatureHint": {
+    "description": "Ejemplo de temperatura"
+  },
+  "clinicalHeartRateLabel": "FC (lpm)",
+  "@clinicalHeartRateLabel": {
+    "description": "Frecuencia cardiaca"
+  },
+  "clinicalHeartRateHint": "10..400",
+  "@clinicalHeartRateHint": {
+    "description": "Rango de frecuencia cardiaca"
+  },
+  "clinicalRespRateLabel": "FR (rpm)",
+  "@clinicalRespRateLabel": {
+    "description": "Frecuencia respiratoria"
+  },
+  "clinicalRespRateHint": "5..200",
+  "@clinicalRespRateHint": {
+    "description": "Rango de frecuencia respiratoria"
+  },
+  "clinicalWeightLabel": "Peso (kg)",
+  "@clinicalWeightLabel": {
+    "description": "Peso"
+  },
+  "clinicalWeightHint": "ej: 12.5",
+  "@clinicalWeightHint": {
+    "description": "Ejemplo de peso"
+  },
+  "clinicalBodyConditionLabel": "CC (1 a 9)",
+  "@clinicalBodyConditionLabel": {
+    "description": "Condicion corporal"
+  },
+  "clinicalSystemNotExamined": "No examinado",
+  "@clinicalSystemNotExamined": {
+    "description": "Sistema no examinado"
+  },
+  "clinicalSystemNormal": "Normal",
+  "@clinicalSystemNormal": {
+    "description": "Sistema normal"
+  },
+  "clinicalSystemAbnormal": "Alterado",
+  "@clinicalSystemAbnormal": {
+    "description": "Sistema alterado"
+  },
+  "clinicalNoPreviousVersions": "No existen versiones anteriores registradas.",
+  "@clinicalNoPreviousVersions": {
+    "description": "Sin versiones previas"
+  },
+  "clinicalAnnulReasonHistoryLabel": "Motivo obligatorio de anulación *",
+  "@clinicalAnnulReasonHistoryLabel": {
+    "description": "Motivo de anulacion en historial"
+  },
+  "clinicalNoRecords": "La mascota no tiene registros clínicos registrados.",
+  "@clinicalNoRecords": {
+    "description": "Sin registros clinicos"
+  },
+  "dashboardShortcutsTooltip": "Ver atajos de teclado (?)",
+  "@dashboardShortcutsTooltip": {
+    "description": "Tooltip de atajos"
+  },
+  "dashboardShortcutsSemantic": "Ver atajos de teclado",
+  "@dashboardShortcutsSemantic": {
+    "description": "Etiqueta accesible de atajos"
+  },
+  "dashboardRefreshTooltip": "Actualizar métricas",
+  "@dashboardRefreshTooltip": {
+    "description": "Tooltip de refresco"
+  },
+  "dashboardRefreshSemantic": "Actualizar métricas",
+  "@dashboardRefreshSemantic": {
+    "description": "Etiqueta accesible de refresco"
+  },
+  "clinicalFindingsLabel": "Hallazgos descriptivos obligatorios para {system} *",
+  "@clinicalFindingsLabel": {
+    "description": "Hallazgos por sistema",
+    "placeholders": {
+      "system": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalVersionEntry": "Versión {number} - {date}",
+  "@clinicalVersionEntry": {
+    "description": "Entrada de version del historial",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalHistoryTitle": "Historial Clínico: {pet}",
+  "@clinicalHistoryTitle": {
+    "description": "Titulo del historial clinico",
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalHistoryLoadError": "Error al cargar historial: {error}",
+  "@clinicalHistoryLoadError": {
+    "description": "Error de carga del historial",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalDiagnosisSummary": "Diagnóstico: {diagnosis}",
+  "@clinicalDiagnosisSummary": {
+    "description": "Resumen de diagnostico",
+    "placeholders": {
+      "diagnosis": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardMetricDetailTooltip": "Ver detalle de {metric}",
+  "@dashboardMetricDetailTooltip": {
+    "description": "Tooltip de detalle de metrica",
+    "placeholders": {
+      "metric": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalFindingsHelper": "Requerido al marcar el sistema como alterado.",
+  "@clinicalFindingsHelper": {
+    "description": "Ayuda del campo de hallazgos"
+  },
+  "clinicalReasonHelper": "Obligatorio. Máximo 500 caracteres.",
+  "@clinicalReasonHelper": {
+    "description": "Ayuda del motivo de consulta"
+  },
+  "clinicalPrescriptionLine": "{medication} ({dose})",
+  "@clinicalPrescriptionLine": {
+    "description": "Linea de prescripcion",
+    "placeholders": {
+      "medication": {
+        "type": "String"
+      },
+      "dose": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalAttachmentLine": "{path} ({bytes} B)",
+  "@clinicalAttachmentLine": {
+    "description": "Linea de adjunto clinico",
+    "placeholders": {
+      "path": {
+        "type": "String"
+      },
+      "bytes": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalVersionBadge": "v{number}",
+  "@clinicalVersionBadge": {
+    "description": "Distintivo de version",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardMetricSemantic": "{metric}: {value}",
+  "@dashboardMetricSemantic": {
+    "description": "Etiqueta accesible de metrica",
+    "placeholders": {
+      "metric": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "navAdminDashboard": "Panel",
+  "@navAdminDashboard": {
+    "description": "Destino: tablero de administracion"
+  },
+  "navAdminClients": "Clientes",
+  "@navAdminClients": {
+    "description": "Destino: gestion de clientes"
+  },
+  "navAdminServices": "Servicios",
+  "@navAdminServices": {
+    "description": "Destino: catalogo de servicios"
+  },
+  "navAdminClinical": "Clínica",
+  "@navAdminClinical": {
+    "description": "Destino: registros clinicos"
+  },
+  "govTitle": "Gobierno y Cuentas",
+  "@govTitle": {
+    "description": "Titulo del modulo de gobierno"
+  },
+  "govTabAccounts": "Cuentas de Usuario",
+  "@govTabAccounts": {
+    "description": "Pestana de gestion de cuentas"
+  },
+  "govTabOperatingParameters": "Configuración Operativa",
+  "@govTabOperatingParameters": {
+    "description": "Pestana de configuracion operativa"
+  },
+  "govTabAuditLog": "Registro de Auditoría",
+  "@govTabAuditLog": {
+    "description": "Pestana de registro de auditoria"
+  },
+  "govSearchPlaceholder": "Buscar por nombre, correo o cédula...",
+  "@govSearchPlaceholder": {
+    "description": "Texto sugerido para busqueda de usuarios"
+  },
+  "govCreateAccountButton": "Crear Cuenta",
+  "@govCreateAccountButton": {
+    "description": "Boton para crear una nueva cuenta"
+  },
+  "govRoleFilterAll": "Todos los roles",
+  "@govRoleFilterAll": {
+    "description": "Filtro: todos los roles"
+  },
+  "govRoleSuperAdmin": "Super Usuario",
+  "@govRoleSuperAdmin": {
+    "description": "Rol: Super Usuario"
+  },
+  "govRoleAdmin": "Administrador",
+  "@govRoleAdmin": {
+    "description": "Rol: Administrador"
+  },
+  "govRoleClient": "Cliente",
+  "@govRoleClient": {
+    "description": "Rol: Cliente"
+  },
+  "govStatusActive": "Activo",
+  "@govStatusActive": {
+    "description": "Estado: Activo"
+  },
+  "govStatusDeactivated": "Desactivado",
+  "@govStatusDeactivated": {
+    "description": "Estado: Desactivado"
+  },
+  "govStatusDeleted": "Eliminado",
+  "@govStatusDeleted": {
+    "description": "Estado: Eliminado"
+  },
+  "govColumnName": "Nombre",
+  "@govColumnName": {
+    "description": "Encabezado de columna: Nombre"
+  },
+  "govColumnEmail": "Correo",
+  "@govColumnEmail": {
+    "description": "Encabezado de columna: Correo"
+  },
+  "govColumnRole": "Rol",
+  "@govColumnRole": {
+    "description": "Encabezado de columna: Rol"
+  },
+  "govColumnStatus": "Estado",
+  "@govColumnStatus": {
+    "description": "Encabezado de columna: Estado"
+  },
+  "govColumnActions": "Acciones",
+  "@govColumnActions": {
+    "description": "Encabezado de columna: Acciones"
+  },
+  "govSuperAdminImmutableBadge": "Inmutable",
+  "@govSuperAdminImmutableBadge": {
+    "description": "Distintivo para cuenta de Super Usuario"
+  },
+  "govActionEditIdentity": "Editar Identidad",
+  "@govActionEditIdentity": {
+    "description": "Accion para editar identidad de cuenta"
+  },
+  "govActionResetPassword": "Restablecer Contraseña",
+  "@govActionResetPassword": {
+    "description": "Accion para restablecer contrasena"
+  },
+  "govActionDeactivate": "Desactivar Cuenta",
+  "@govActionDeactivate": {
+    "description": "Accion para desactivar cuenta"
+  },
+  "govActionReactivate": "Reactivar Cuenta",
+  "@govActionReactivate": {
+    "description": "Accion para reactivar una cuenta desactivada"
+  },
+  "govActionDeleteStaff": "Eliminar Personal",
+  "@govActionDeleteStaff": {
+    "description": "Accion para dar de baja a personal"
+  },
+  "govNoAccountsFound": "No se encontraron cuentas de usuario.",
+  "@govNoAccountsFound": {
+    "description": "Mensaje cuando la lista de cuentas esta vacia"
+  },
+  "govCreateAccountDialogTitle": "Crear Nueva Cuenta",
+  "@govCreateAccountDialogTitle": {
+    "description": "Titulo del dialogo de creacion de cuenta"
+  },
+  "govFieldEmail": "Correo Electrónico",
+  "@govFieldEmail": {
+    "description": "Campo de correo electronico"
+  },
+  "govFieldFullName": "Nombre Completo",
+  "@govFieldFullName": {
+    "description": "Campo de nombre completo"
+  },
+  "govFieldRole": "Rol de la Cuenta",
+  "@govFieldRole": {
+    "description": "Campo para seleccionar rol"
+  },
+  "govFieldPhone": "Teléfono (+593...)",
+  "@govFieldPhone": {
+    "description": "Campo de telefono celular"
+  },
+  "govFieldDocumentType": "Tipo de Documento",
+  "@govFieldDocumentType": {
+    "description": "Campo de tipo de documento"
+  },
+  "govFieldDocumentNumber": "Número de Documento",
+  "@govFieldDocumentNumber": {
+    "description": "Campo de numero de documento"
+  },
+  "govFieldAddress": "Dirección",
+  "@govFieldAddress": {
+    "description": "Campo de direccion"
+  },
+  "govButtonCancel": "Cancelar",
+  "@govButtonCancel": {
+    "description": "Boton de cancelacion"
+  },
+  "govButtonCreate": "Crear y Generar Enlace",
+  "@govButtonCreate": {
+    "description": "Boton para enviar creacion de cuenta"
+  },
+  "govValidationRequired": "Este campo es obligatorio",
+  "@govValidationRequired": {
+    "description": "Mensaje de validacion para campo vacio"
+  },
+  "govValidationInvalidEmail": "Correo electrónico no válido",
+  "@govValidationInvalidEmail": {
+    "description": "Mensaje de validacion de correo invalido"
+  },
+  "govValidationInvalidPhone": "Teléfono no válido (+593 seguido de 9 dígitos)",
+  "@govValidationInvalidPhone": {
+    "description": "Mensaje de validacion de telefono invalido"
+  },
+  "govEditIdentityDialogTitle": "Editar Identidad de Cuenta",
+  "@govEditIdentityDialogTitle": {
+    "description": "Titulo del dialogo para editar identidad"
+  },
+  "govEmailReadOnlyNotice": "El correo electrónico es de sólo lectura y no puede modificarse.",
+  "@govEmailReadOnlyNotice": {
+    "description": "Aviso de correo inmutable"
+  },
+  "govButtonSave": "Guardar Cambios",
+  "@govButtonSave": {
+    "description": "Boton para guardar cambios"
+  },
+  "govLinkDialogTitleCreated": "Cuenta Aprovisionada con Éxito",
+  "@govLinkDialogTitleCreated": {
+    "description": "Titulo del dialogo con enlace de cuenta creada"
+  },
+  "govLinkDialogTitleReset": "Enlace de Restablecimiento Generado",
+  "@govLinkDialogTitleReset": {
+    "description": "Titulo del dialogo con enlace de restablecimiento"
+  },
+  "govLinkDialogNotice": "Entregue el siguiente enlace al usuario de forma presencial o por canal seguro. El sistema NO despacha correos automáticos:",
+  "@govLinkDialogNotice": {
+    "description": "Aviso de entrega manual sin envio de correo"
+  },
+  "govButtonCopyLink": "Copiar Enlace",
+  "@govButtonCopyLink": {
+    "description": "Boton para copiar enlace"
+  },
+  "govLinkCopiedSnackbar": "Enlace copiado al portapapeles.",
+  "@govLinkCopiedSnackbar": {
+    "description": "Mensaje de enlace copiado"
+  },
+  "govButtonClose": "Cerrar",
+  "@govButtonClose": {
+    "description": "Boton de cierre de dialogo"
+  },
+  "govConfirmDeactivateTitle": "Confirmar Desactivación",
+  "@govConfirmDeactivateTitle": {
+    "description": "Titulo de confirmacion de desactivacion"
+  },
+  "govConfirmDeactivateMessage": "¿Está seguro de que desea desactivar la cuenta de {name}? Se revocarán sus sesiones y se cancelarán citas activas.",
+  "@govConfirmDeactivateMessage": {
+    "description": "Mensaje de confirmacion de desactivacion",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "govButtonConfirmDeactivate": "Desactivar",
+  "@govButtonConfirmDeactivate": {
+    "description": "Boton para confirmar desactivacion"
+  },
+  "govConfirmReactivateTitle": "Confirmar Reactivación",
+  "@govConfirmReactivateTitle": {
+    "description": "Titulo de confirmacion de reactivacion de cuenta"
+  },
+  "govConfirmReactivateMessage": "¿Está seguro de que desea reactivar la cuenta de {name}? Volverá a tener acceso al sistema.",
+  "@govConfirmReactivateMessage": {
+    "description": "Mensaje de confirmacion de reactivacion de cuenta",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "govButtonConfirmReactivate": "Reactivar",
+  "@govButtonConfirmReactivate": {
+    "description": "Boton para confirmar reactivacion"
+  },
+  "govConfirmDeleteStaffTitle": "Confirmar Baja Lógica de Personal",
+  "@govConfirmDeleteStaffTitle": {
+    "description": "Titulo de confirmacion de eliminacion logica de personal"
+  },
+  "govConfirmDeleteStaffMessage": "¿Está seguro de dar de baja lógica a {name}? Su cuenta quedará deshabilitada pero su historial clínico y contable se preservará íntegro.",
+  "@govConfirmDeleteStaffMessage": {
+    "description": "Mensaje de confirmacion de eliminacion logica",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "govButtonConfirmDelete": "Eliminar Personal",
+  "@govButtonConfirmDelete": {
+    "description": "Boton para confirmar eliminacion logica de personal"
+  },
+  "govOperatingParamsTitle": "Parámetros Operativos del Negocio",
+  "@govOperatingParamsTitle": {
+    "description": "Titulo de parametros operativos"
+  },
+  "govOperatingParamsDescription": "Configuración general de horarios, turnos y umbrales de inventario. La zona horaria institucional es inmutable (America/Guayaquil).",
+  "@govOperatingParamsDescription": {
+    "description": "Descripcion de parametros operativos"
+  },
+  "govFieldOpeningTime": "Hora de Apertura (HH:mm)",
+  "@govFieldOpeningTime": {
+    "description": "Campo hora de apertura"
+  },
+  "govFieldClosingTime": "Hora de Cierre (HH:mm)",
+  "@govFieldClosingTime": {
+    "description": "Campo hora de cierre"
+  },
+  "govFieldSlotDuration": "Duración de Turno (minutos)",
+  "@govFieldSlotDuration": {
+    "description": "Campo duracion de turno"
+  },
+  "govFieldWorkingDays": "Días Laborables",
+  "@govFieldWorkingDays": {
+    "description": "Campo dias laborables"
+  },
+  "govFieldLowStockThreshold": "Umbral de Stock Bajo",
+  "@govFieldLowStockThreshold": {
+    "description": "Campo umbral de stock bajo"
+  },
+  "govDayMonday": "Lunes",
+  "@govDayMonday": {
+    "description": "Dia lunes"
+  },
+  "govDayTuesday": "Martes",
+  "@govDayTuesday": {
+    "description": "Dia martes"
+  },
+  "govDayWednesday": "Miércoles",
+  "@govDayWednesday": {
+    "description": "Dia miercoles"
+  },
+  "govDayThursday": "Jueves",
+  "@govDayThursday": {
+    "description": "Dia jueves"
+  },
+  "govDayFriday": "Viernes",
+  "@govDayFriday": {
+    "description": "Dia viernes"
+  },
+  "govDaySaturday": "Sábado",
+  "@govDaySaturday": {
+    "description": "Dia sabado"
+  },
+  "govDaySunday": "Domingo",
+  "@govDaySunday": {
+    "description": "Dia domingo"
+  },
+  "govButtonSaveParams": "Guardar Parámetros",
+  "@govButtonSaveParams": {
+    "description": "Boton guardar parametros"
+  },
+  "govParamsSavedSuccess": "Parámetros operativos actualizados correctamente.",
+  "@govParamsSavedSuccess": {
+    "description": "Mensaje de parametros guardados"
+  },
+  "govInvalidTimeOrder": "La hora de apertura debe ser anterior a la de cierre.",
+  "@govInvalidTimeOrder": {
+    "description": "Validacion de orden de horarios"
+  },
+  "govAuditLogTitle": "Registro de Auditoría",
+  "@govAuditLogTitle": {
+    "description": "Titulo de registro de auditoria"
+  },
+  "govAuditLogEmpty": "No hay registros de auditoría disponibles.",
+  "@govAuditLogEmpty": {
+    "description": "Mensaje de log vacio"
+  },
+  "govAuditColumnDate": "Fecha y Hora",
+  "@govAuditColumnDate": {
+    "description": "Columna fecha y hora de auditoria"
+  },
+  "govAuditColumnActor": "Actor",
+  "@govAuditColumnActor": {
+    "description": "Columna actor de auditoria"
+  },
+  "govAuditColumnAction": "Acción",
+  "@govAuditColumnAction": {
+    "description": "Columna accion de auditoria"
+  },
+  "govAuditColumnTarget": "Objetivo",
+  "@govAuditColumnTarget": {
+    "description": "Columna objetivo de auditoria"
+  },
+  "govAuditColumnMetadata": "Metadatos",
+  "@govAuditColumnMetadata": {
+    "description": "Columna metadatos de auditoria"
+  },
+  "govButtonRefresh": "Actualizar",
+  "@govButtonRefresh": {
+    "description": "Boton actualizar"
+  },
+  "govAuditFilterAction": "Filtrar por acción",
+  "@govAuditFilterAction": {
+    "description": "Filtro de accion en auditoria"
+  },
+  "govAuditAllActions": "Todas las acciones",
+  "@govAuditAllActions": {
+    "description": "Opcion todas las acciones"
+  },
+  "adminNavClients": "Clientes",
+  "@adminNavClients": {
+    "description": "Titulo de navegacion de clientes"
+  },
+  "adminNavClinical": "Registro Clínico",
+  "@adminNavClinical": {
+    "description": "Titulo de navegacion de registro clinico"
+  },
+  "adminNavChat": "Bandeja de Mensajería",
+  "@adminNavChat": {
+    "description": "Titulo de navegacion de bandeja de mensajeria"
+  },
+  "catalogSelectionTitle": "Productos seleccionados",
+  "@catalogSelectionTitle": {
+    "description": "Titulo del panel o resumen de seleccion de productos"
+  },
+  "catalogClearSelection": "Limpiar selección",
+  "@catalogClearSelection": {
+    "description": "Boton para limpiar los productos seleccionados"
+  },
+  "catalogSubmitRequestWithCount": "Solicitar {count} producto(s)",
+  "@catalogSubmitRequestWithCount": {
+    "description": "Boton para solicitar seleccionados con conteo",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "catalogAddToSelection": "Agregar a la solicitud",
+  "@catalogAddToSelection": {
+    "description": "Boton para agregar un producto a la seleccion"
+  },
+  "catalogRemoveFromSelection": "Eliminar de la selección",
+  "@catalogRemoveFromSelection": {
+    "description": "Boton para quitar un producto de la seleccion"
+  },
+  "catalogRequestSuccess": "Solicitud enviada exitosamente",
+  "@catalogRequestSuccess": {
+    "description": "Mensaje de exito al enviar la solicitud"
+  },
+  "catalogSelectionEmpty": "No has seleccionado ningún producto",
+  "@catalogSelectionEmpty": {
+    "description": "Mensaje cuando no hay productos seleccionados"
+  },
+  "catalogSelectionLinePrices": "Unitario: ${unit} · Total: ${total}",
+  "@catalogSelectionLinePrices": {
+    "description": "Precios unitario y total por linea de seleccion",
+    "placeholders": {
+      "unit": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "catalogInSelectionBadge": "En la solicitud: {quantity}",
+  "@catalogInSelectionBadge": {
+    "description": "Insignia de cantidad seleccionada para el producto",
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      }
+    }
+  },
+  "catalogSelectionSummary": "{units, plural, =1{1 unidad} other{{units} unidades}} · {lines, plural, =1{1 producto} other{{lines} productos}}",
+  "@catalogSelectionSummary": {
+    "description": "Resumen de unidades y lineas seleccionadas",
+    "placeholders": {
+      "units": {
+        "type": "int"
+      },
+      "lines": {
+        "type": "int"
+      }
+    }
+  },
+  "productDetailTotal": "Total: ${amount}",
+  "@productDetailTotal": {
+    "description": "Total formateado en detalle de producto",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "cartOpenAction": "Mi carrito",
+  "@cartOpenAction": {
+    "description": "Boton para abrir el carrito de compras"
+  },
+  "cartBreakdownSubtotal": "Subtotal: ${amount}",
+  "@cartBreakdownSubtotal": {
+    "description": "Subtotal del desglose del carrito",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "cartBreakdownIce": "ICE: ${amount}",
+  "@cartBreakdownIce": {
+    "description": "Desglose de ICE en el carrito",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "cartBreakdownIva": "IVA: ${amount}",
+  "@cartBreakdownIva": {
+    "description": "Desglose de IVA en el carrito",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "productQuantityLabel": "Cantidad",
+  "@productQuantityLabel": {
+    "description": "Etiqueta para el selector de cantidad"
+  },
+  "catalogClearSearch": "Borrar la búsqueda",
+  "@catalogClearSearch": {
+    "description": "Rotulo accesible del boton que borra la busqueda del catalogo"
+  },
+  "catalogDecreaseQuantity": "Quitar una unidad",
+  "@catalogDecreaseQuantity": {
+    "description": "Rotulo accesible del boton que resta una unidad"
+  },
+  "catalogIncreaseQuantity": "Añadir una unidad",
+  "@catalogIncreaseQuantity": {
+    "description": "Rotulo accesible del boton que suma una unidad"
+  },
+  "routeNotFoundTitle": "Esta página no existe",
+  "@routeNotFoundTitle": {
+    "description": "Titulo de la pantalla que sustituye al error interno del enrutador cuando la direccion no corresponde a ninguna pantalla (AUD-343, N-15)"
+  },
+  "routeNotFoundMessage": "La dirección que abriste no corresponde a ninguna pantalla. Puede que el enlace venga de una versión anterior.",
+  "@routeNotFoundMessage": {
+    "description": "Explicacion para quien llega a una direccion desconocida, sin texto tecnico ni identificadores internos"
+  },
+  "routeNotFoundAction": "Volver al inicio",
+  "@routeNotFoundAction": {
+    "description": "Rotulo del control que devuelve al usuario a su pantalla inicial desde la pantalla de direccion desconocida"
+  },
+  "adminPetClinicalRecordAction": "Registro clínico",
+  "@adminPetClinicalRecordAction": {
+    "description": "Rotulo del control que abre el registro clinico de una mascota desde la ficha de cliente (AUD-344, CL-03)"
+  },
+  "adminPetClinicalRecordSemantics": "Abrir el registro clínico de {petName}",
+  "@adminPetClinicalRecordSemantics": {
+    "description": "Rotulo accesible del control que abre el registro clinico, con el nombre real de la mascota (N-06)",
+    "placeholders": {
+      "petName": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalAnnulmentWarning": "La anulación es inmutable. El registro quedará marcado como ANNULLED y no se podrá volver a editar.",
+  "@clinicalAnnulmentWarning": {
+    "description": "Advertencia del dialogo de anulacion de un registro clinico (CL-08)"
+  },
+  "clinicalCorrectConsultationTitle": "Corregir Consulta Clínica",
+  "@clinicalCorrectConsultationTitle": {
+    "description": "Titulo del formulario cuando corrige una consulta ya guardada (CL-12)"
+  },
+  "clinicalSectionReasonTitle": "2. Motivo y Anamnesis",
+  "@clinicalSectionReasonTitle": {
+    "description": "Titulo de la seccion 2 del formulario de consulta (PRD 3.5.2)"
+  },
+  "clinicalSectionVitalsTitle": "3. Signos Vitales",
+  "@clinicalSectionVitalsTitle": {
+    "description": "Titulo de la seccion 3 del formulario de consulta"
+  },
+  "clinicalSectionExamTitle": "4. Examen Físico por Sistemas (10 Sistemas)",
+  "@clinicalSectionExamTitle": {
+    "description": "Titulo de la seccion 4, examen fisico por sistemas"
+  },
+  "clinicalSectionExamHelp": "Todos los sistemas inician por omisión en \"NOT_EXAMINED\". Si marca \"ABNORMAL\", es obligatorio ingresar el hallazgo descriptivo.",
+  "@clinicalSectionExamHelp": {
+    "description": "Ayuda de la seccion de examen fisico: ningun sistema se marca normal por omision"
+  },
+  "clinicalSectionPlanTitle": "5. Diagnóstico y Tratamiento",
+  "@clinicalSectionPlanTitle": {
+    "description": "Titulo de la seccion 5, diagnostico y plan"
+  },
+  "clinicalTreatmentLinesLabel": "Líneas de Tratamiento:",
+  "@clinicalTreatmentLinesLabel": {
+    "description": "Rotulo de la lista de lineas de tratamiento prescritas"
+  },
+  "clinicalNoPrescriptions": "No se han prescrito medicamentos para esta consulta.",
+  "@clinicalNoPrescriptions": {
+    "description": "Estado vacio de la lista de medicamentos prescritos"
+  },
+  "clinicalNotEditableNotice": "Este registro clínico no puede ser editado porque está anulado o usted no es el autor original ni Super Usuario.",
+  "@clinicalNotEditableNotice": {
+    "description": "Aviso de que la entrada no admite correccion (CL-12, CL-08)"
+  },
+  "clinicalSaveCorrectionAction": "Guardar Corrección con Versionado",
+  "@clinicalSaveCorrectionAction": {
+    "description": "Accion de guardar una correccion, que conserva la version anterior (CL-12)"
+  },
+  "clinicalSaveConsultationAction": "Guardar Consulta Clínica",
+  "@clinicalSaveConsultationAction": {
+    "description": "Accion de guardar la entrada de consulta (CL-03)"
+  },
+  "clinicalSectionPatientTitle": "1. Bloque de Datos del Paciente (Congelado de Solo Lectura)",
+  "@clinicalSectionPatientTitle": {
+    "description": "Titulo del bloque congelado de identificacion del paciente (PRD 3.5.2)"
+  },
+  "clinicalSystemMucous": "Mucosas",
+  "@clinicalSystemMucous": {
+    "description": "Nombre del sistema anatomico: mucosas"
+  },
+  "clinicalSystemSkin": "Piel y Anexos",
+  "@clinicalSystemSkin": {
+    "description": "Nombre del sistema anatomico: piel y anexos"
+  },
+  "clinicalSystemEars": "Oídos",
+  "@clinicalSystemEars": {
+    "description": "Nombre del sistema anatomico: oidos"
+  },
+  "clinicalSystemCardiovascular": "Cardiovascular",
+  "@clinicalSystemCardiovascular": {
+    "description": "Nombre del sistema anatomico: cardiovascular"
+  },
+  "clinicalSystemRespiratory": "Respiratorio",
+  "@clinicalSystemRespiratory": {
+    "description": "Nombre del sistema anatomico: respiratorio"
+  },
+  "clinicalSystemGastrointestinal": "Gastrointestinal",
+  "@clinicalSystemGastrointestinal": {
+    "description": "Nombre del sistema anatomico: gastrointestinal"
+  },
+  "clinicalSystemNervous": "Nervioso",
+  "@clinicalSystemNervous": {
+    "description": "Nombre del sistema anatomico: nervioso"
+  },
+  "clinicalSystemMusculoskeletal": "Músculo-esquelético",
+  "@clinicalSystemMusculoskeletal": {
+    "description": "Nombre del sistema anatomico: musculo-esqueletico"
+  },
+  "clinicalSystemGenitourinary": "Génito-urinario",
+  "@clinicalSystemGenitourinary": {
+    "description": "Nombre del sistema anatomico: genito-urinario"
+  },
+  "clinicalVersionsSheetTitle": "Historial de Versiones",
+  "@clinicalVersionsSheetTitle": {
+    "description": "Titulo de la hoja que lista las versiones de una entrada (CL-12, CA-AD-52)"
+  },
+  "clinicalVersionDateUnknown": "Fecha anterior",
+  "@clinicalVersionDateUnknown": {
+    "description": "Texto cuando la version anterior no conserva fecha legible"
+  },
+  "clinicalVersionReasonUnknown": "Sin motivo",
+  "@clinicalVersionReasonUnknown": {
+    "description": "Texto cuando la version anterior no conserva motivo"
+  },
+  "clinicalAnnulEntryWarning": "Esta acción es definitiva e inmutable. Se guardará el motivo de la anulación.",
+  "@clinicalAnnulEntryWarning": {
+    "description": "Advertencia del dialogo de anulacion desde el historial (CL-08)"
+  },
+  "clinicalAnnulAction": "Anular",
+  "@clinicalAnnulAction": {
+    "description": "Accion de anular una entrada clinica desde su tarjeta (CL-08, CA-AD-31)"
+  },
+  "sessionInvalid": "Sesión no válida",
+  "@sessionInvalid": {
+    "description": "Aviso de que no hay sesion valida para ejecutar la accion"
+  },
+  "adminBlockAvailabilitySemantics": "Crear bloqueo de disponibilidad",
+  "@adminBlockAvailabilitySemantics": {
+    "description": "Rotulo accesible del control que crea un bloqueo (AG-06, N-06)"
+  },
+  "adminBlockConflictsHelp": "Existen citas agendadas en la franja o fecha bloqueada. Resuelva cada conflicto cancelando o reagendando la cita individualmente:",
+  "@adminBlockConflictsHelp": {
+    "description": "Explicacion de que un bloqueo dejo citas en conflicto (AG-06, CA-AD-55)"
+  },
+  "adminAgendaEmpty": "No hay citas agendadas para el período o filtros seleccionados.",
+  "@adminAgendaEmpty": {
+    "description": "Estado vacio de la agenda con los filtros puestos (AG-01)"
+  },
+  "adminAppointmentBlockConflict": "En conflicto con bloqueo",
+  "@adminAppointmentBlockConflict": {
+    "description": "Indicador de cita en conflicto con un bloqueo de disponibilidad"
+  },
+  "adminAppointmentClinicalPending": "Ficha clínica pendiente",
+  "@adminAppointmentClinicalPending": {
+    "description": "Indicador de cita completada con registro clinico pendiente (CL-10, CA-AD-44)"
+  },
+  "agendaConfirmAppointmentSemantics": "Confirmar cita",
+  "@agendaConfirmAppointmentSemantics": {
+    "description": "Rotulo accesible del control que confirma una cita (AG-02, N-06)"
+  },
+  "agendaConfirmAppointmentTooltip": "Confirmar Cita",
+  "@agendaConfirmAppointmentTooltip": {
+    "description": "Ayuda emergente del control que confirma una cita (AG-02)"
+  },
+  "agendaCompleteAppointmentTooltip": "Completar Cita",
+  "@agendaCompleteAppointmentTooltip": {
+    "description": "Ayuda emergente del control que completa una cita (AG-03)"
+  },
+  "agendaCompleteAppointmentSemantics": "Completar cita",
+  "@agendaCompleteAppointmentSemantics": {
+    "description": "Rotulo accesible del control que completa una cita (AG-03, N-06)"
+  },
+  "agendaRescheduleAppointmentSemantics": "Reagendar cita",
+  "@agendaRescheduleAppointmentSemantics": {
+    "description": "Rotulo accesible del control que reagenda una cita (AG-08, N-06)"
+  },
+  "agendaCancelAppointmentSemantics": "Cancelar cita",
+  "@agendaCancelAppointmentSemantics": {
+    "description": "Rotulo accesible del control que cancela una cita (AG-05, N-06)"
+  },
+  "clinicalAttachmentDefaultDesc": "Informe clínico complementario #{count}",
+  "@clinicalAttachmentDefaultDesc": {
+    "description": "Descripcion por defecto para adjunto clinico simulado",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "clinicalTreatmentLineDetails": "Vía: {route} | Duración: {duration} | Mod.: {modality}",
+  "@clinicalTreatmentLineDetails": {
+    "description": "Detalles de linea de tratamiento medico",
+    "placeholders": {
+      "route": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      },
+      "modality": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalSectionAttachmentsTitle": "6. Adjuntos Clínicos ({count}/{max})",
+  "@clinicalSectionAttachmentsTitle": {
+    "description": "Titulo de seccion de adjuntos clinicos con contador",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "clinicalPatientDataPet": "Mascota: {name} ({species} - {breed}) | Sexo: {sex} | Edad: {age}",
+  "@clinicalPatientDataPet": {
+    "description": "Ficha congelada: datos de la mascota",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "species": {
+        "type": "String"
+      },
+      "breed": {
+        "type": "String"
+      },
+      "sex": {
+        "type": "String"
+      },
+      "age": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalPatientDataReproductive": "Estado Reproductivo: {status} | Nacimiento: {birthDate}",
+  "@clinicalPatientDataReproductive": {
+    "description": "Ficha congelada: estado reproductivo y nacimiento",
+    "placeholders": {
+      "status": {
+        "type": "String"
+      },
+      "birthDate": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalPatientDataOwner": "Propietario: {name} | {docType}: {docNumber}",
+  "@clinicalPatientDataOwner": {
+    "description": "Ficha congelada: datos del propietario y documento",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "docType": {
+        "type": "String"
+      },
+      "docNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalPatientDataContact": "Contacto: {phone} | Correo: {email} | Dirección: {address}",
+  "@clinicalPatientDataContact": {
+    "description": "Ficha congelada: contacto y direccion",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      },
+      "email": {
+        "type": "String"
+      },
+      "address": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalVersionEditedByReason": "Editado por: {editor}\nMotivo: {reason}",
+  "@clinicalVersionEditedByReason": {
+    "description": "Subtitulo de version en historial clinico con editor y motivo",
+    "placeholders": {
+      "editor": {
+        "type": "String"
+      },
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalRecordCorrectedBadge": "CORREGIDO (v{version})",
+  "@clinicalRecordCorrectedBadge": {
+    "description": "Insignia de registro clinico corregido con version",
+    "placeholders": {
+      "version": {
+        "type": "int"
+      }
+    }
+  },
+  "clinicalRecordAttendedBy": "Atendido por: {authorName}",
+  "@clinicalRecordAttendedBy": {
+    "description": "Nombre del profesional que atendio la consulta",
+    "placeholders": {
+      "authorName": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalRecordReason": "Motivo: {reason}",
+  "@clinicalRecordReason": {
+    "description": "Motivo de la consulta en historial clinico",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalRecordAnnulmentReason": "Motivo de anulación: {reason}",
+  "@clinicalRecordAnnulmentReason": {
+    "description": "Motivo de anulacion del registro clinico",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "adminBlockConflictsDetected": "Conflictos de Bloqueo Detectados ({count})",
+  "@adminBlockConflictsDetected": {
+    "description": "Cabecera de conflictos detectados por bloqueo de agenda",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminConflictServiceDateTime": "{service} | {date} a las {timeSlot}",
+  "@adminConflictServiceDateTime": {
+    "description": "Detalle de cita en conflicto con servicio fecha y franja",
+    "placeholders": {
+      "service": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      },
+      "timeSlot": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAppointmentClientPet": "{clientName} (Mascota: {petName})",
+  "@adminAppointmentClientPet": {
+    "description": "Linea de cliente y nombre de mascota en tarjeta de cita",
+    "placeholders": {
+      "clientName": {
+        "type": "String"
+      },
+      "petName": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAppointmentClientNotes": "Nota del cliente: {notes}",
+  "@adminAppointmentClientNotes": {
+    "description": "Nota del cliente en tarjeta de cita de agenda",
+    "placeholders": {
+      "notes": {
+        "type": "String"
+      }
+    }
+  },
+  "adminProformaClient": "Cliente: {clientName}",
+  "@adminProformaClient": {
+    "description": "Etiqueta y nombre de cliente en tarjeta de proforma de administración",
+    "placeholders": {
+      "clientName": {
+        "type": "String"
+      }
+    }
+  },
+  "adminProformaCardSummary": "Ítems: {count} · {totalLabel}: ${amount}",
+  "@adminProformaCardSummary": {
+    "description": "Resumen de ítems y total en tarjeta de proforma para administración",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "totalLabel": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentSummaryItemQuantity": "Cant: {quantity}",
+  "@paymentSummaryItemQuantity": {
+    "description": "Cantidad de unidades de un ítem en resumen de pago",
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      }
+    }
+  },
+  "paymentSummaryItemBase": "Base: ${amount}",
+  "@paymentSummaryItemBase": {
+    "description": "Precio base de un ítem en resumen de pago",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentSummaryItemIce": "ICE ({rate}%): ${amount}",
+  "@paymentSummaryItemIce": {
+    "description": "Importe de ICE de un ítem en resumen de pago",
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentSummaryItemIva": "IVA ({rate}%): ${amount}",
+  "@paymentSummaryItemIva": {
+    "description": "Importe de IVA de un ítem en resumen de pago",
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "proformaItemQuantityAndIce": "Cant: {quantity} × ${amount} | ICE: {iceBp} bp",
+  "@proformaItemQuantityAndIce": {
+    "description": "Cantidad, precio base e ICE de un ítem en composición de proforma",
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      },
+      "iceBp": {
+        "type": "int"
+      }
+    }
+  },
+  "showPassword": "Mostrar contraseña",
+  "@showPassword": {
+    "description": "Rótulo de accesibilidad para mostrar contraseña"
+  },
+  "hidePassword": "Ocultar contraseña",
+  "@hidePassword": {
+    "description": "Rótulo de accesibilidad para ocultar contraseña"
+  },
+  "loginWelcomeTitle": "Bienvenido a PetShop",
+  "@loginWelcomeTitle": {
+    "description": "Título de bienvenida en pantalla de inicio de sesión"
+  },
+  "loginSubtitle": "Ingresa tus credenciales para acceder a tu panel",
+  "@loginSubtitle": {
+    "description": "Subtítulo en pantalla de inicio de sesión"
+  },
+  "forgotPasswordInstructionsSentTitle": "Instrucciones enviadas",
+  "@forgotPasswordInstructionsSentTitle": {
+    "description": "Título de éxito en recuperación de contraseña"
+  },
+  "staffInboxModerationControlsTitle": "Controles de Moderación (Exclusivo Super Usuario)",
+  "@staffInboxModerationControlsTitle": {
+    "description": "Título de controles de moderación en bandeja de staff"
+  },
+  "staffInboxSelectConversationPrompt": "Seleccione una conversación para ver los mensajes.",
+  "@staffInboxSelectConversationPrompt": {
+    "description": "Mensaje en panel vacío de mensajes en bandeja de staff"
+  },
+  "staffInboxClientConversationsHeader": "CONVERSACIONES CON CLIENTES",
+  "@staffInboxClientConversationsHeader": {
+    "description": "Cabecera de lista de conversaciones con clientes"
+  },
+  "staffInboxConversationBlockedNotice": "Esta conversación se encuentra bloqueada administrativamente.",
+  "@staffInboxConversationBlockedNotice": {
+    "description": "Aviso de conversación bloqueada"
+  },
+  "staffInboxConversationArchivedNotice": "Esta conversación se encuentra archivada.",
+  "@staffInboxConversationArchivedNotice": {
+    "description": "Aviso de conversación archivada"
+  },
+  "staffInboxModerateButtonLabel": "Moderar",
+  "@staffInboxModerateButtonLabel": {
+    "description": "Etiqueta del botón de moderar chat"
+  },
+  "clinicalRecordAnnulledBadge": "ANULADO",
+  "@clinicalRecordAnnulledBadge": {
+    "description": "Insignia de registro clínico anulado"
+  },
+  "adminProformaCardId": "Proforma: {id}",
+  "@adminProformaCardId": {
+    "description": "Identificador de proforma en tarjeta de administración",
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "proformaNoItemsAdded": "Esta proforma no contiene ítems agregados.",
+  "@proformaNoItemsAdded": {
+    "description": "Mensaje cuando una proforma no tiene ítems"
+  },
+  "adminClientDocAndPhone": "{docType}: {docNumber} | Tel: {phone}",
+  "@adminClientDocAndPhone": {
+    "description": "Documento y teléfono de cliente en lista administrativa",
+    "placeholders": {
+      "docType": {
+        "type": "String"
+      },
+      "docNumber": {
+        "type": "String"
+      },
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "adminClientEmailAndPhone": "Correo: {email} | Tel: {phone}",
+  "@adminClientEmailAndPhone": {
+    "description": "Correo y teléfono de cliente en lista administrativa",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      },
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "pdfDownloadSuccessWithSize": "{message} ({sizeKb} KB)",
+  "@pdfDownloadSuccessWithSize": {
+    "description": "Mensaje de descarga exitosa de PDF con tamaño en KB",
+    "placeholders": {
+      "message": {
+        "type": "String"
+      },
+      "sizeKb": {
+        "type": "String"
+      }
+    }
+  },
+  "staffProfileTitle": "Perfil del Personal",
+  "@staffProfileTitle": {
+    "description": "Título de pantalla de perfil para personal staff"
+  },
+  "staffInboxInternalChannelTitle": "Canal Interno (STAFF_INTERNAL)",
+  "@staffInboxInternalChannelTitle": {
+    "description": "Título del canal interno en la bandeja de staff"
+  },
+  "staffInboxClientLabel": "Cliente: {name}",
+  "@staffInboxClientLabel": {
+    "description": "Rótulo de cliente con nombre en chat de staff",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "clientHomeGreeting": "Hola, {name}",
+  "@clientHomeGreeting": {
+    "description": "Saludo en inicio del cliente",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "clientHomeSubtitle": "Resumen de tu cuenta en PetShop",
+  "@clientHomeSubtitle": {
+    "description": "Subtítulo en inicio del cliente"
+  },
+  "clientHomeNextAppointmentTitle": "Próxima cita",
+  "@clientHomeNextAppointmentTitle": {
+    "description": "Título de tarjeta de próxima cita"
+  },
+  "clientHomeNoAppointments": "Sin citas programadas",
+  "@clientHomeNoAppointments": {
+    "description": "Texto cuando no hay citas programadas"
+  },
+  "clientHomeActivePetsTitle": "Mascotas activas",
+  "@clientHomeActivePetsTitle": {
+    "description": "Título de tarjeta de mascotas activas"
+  },
+  "clientHomeActiveRequestsTitle": "Solicitudes en curso",
+  "@clientHomeActiveRequestsTitle": {
+    "description": "Título de tarjeta de solicitudes en curso"
+  },
+  "clientHomeNoRequests": "Sin solicitudes activas",
+  "@clientHomeNoRequests": {
+    "description": "Texto cuando no hay solicitudes activas"
+  },
+  "clientHomeQuickActionsTitle": "Accesos rápidos",
+  "@clientHomeQuickActionsTitle": {
+    "description": "Título de tarjeta de accesos rápidos"
+  },
+  "clientHomeRecentMessagesTitle": "Mensajes recientes",
+  "@clientHomeRecentMessagesTitle": {
+    "description": "Título de tarjeta de mensajes recientes"
+  },
+  "clientHomeNoRecentMessages": "Sin mensajes nuevos del negocio",
+  "@clientHomeNoRecentMessages": {
+    "description": "Texto cuando no hay mensajes nuevos"
+  },
+  "clientHomeBookAppointmentAction": "Agendar cita",
+  "@clientHomeBookAppointmentAction": {
+    "description": "Acción rápida de agendar cita"
+  },
+  "clientHomeViewCatalogAction": "Ver catálogo",
+  "@clientHomeViewCatalogAction": {
+    "description": "Acción rápida de ver catálogo"
+  },
+  "clientHomeRegisterPetAction": "Registrar mascota",
+  "@clientHomeRegisterPetAction": {
+    "description": "Acción rápida de registrar mascota"
+  },
+  "adminDashboardSubtitle": "Resumen operativo del día",
+  "@adminDashboardSubtitle": {
+    "description": "Subtítulo del panel administrativo"
+  },
+  "adminDashboardAppointmentsToday": "Citas hoy",
+  "@adminDashboardAppointmentsToday": {
+    "description": "Métrica de citas hoy"
+  },
+  "adminDashboardPendingRequests": "Solicitudes pendientes",
+  "@adminDashboardPendingRequests": {
+    "description": "Métrica de solicitudes pendientes"
+  },
+  "adminDashboardLowStock": "Productos con stock bajo",
+  "@adminDashboardLowStock": {
+    "description": "Métrica de stock bajo"
+  },
+  "adminDashboardTodayIncome": "Ingresos del día",
+  "@adminDashboardTodayIncome": {
+    "description": "Métrica de ingresos del día"
+  },
+  "adminDashboardUpcomingAppointments": "Próximas citas",
+  "@adminDashboardUpcomingAppointments": {
+    "description": "Título de tarjeta de próximas citas en dashboard"
+  },
+  "adminDashboardRecentActivity": "Actividad reciente",
+  "@adminDashboardRecentActivity": {
+    "description": "Título de tarjeta de actividad reciente en dashboard"
+  },
+  "adminDashboardNoActivity": "Sin actividad reciente",
+  "@adminDashboardNoActivity": {
+    "description": "Texto cuando no hay actividad reciente"
+  },
+  "tableHeaderPet": "MASCOTA",
+  "@tableHeaderPet": {
+    "description": "Cabecera de tabla Mascota"
+  },
+  "tableHeaderService": "SERVICIO",
+  "@tableHeaderService": {
+    "description": "Cabecera de tabla Servicio"
+  },
+  "tableHeaderDateTime": "FECHA Y HORA",
+  "@tableHeaderDateTime": {
+    "description": "Cabecera de tabla Fecha y Hora"
+  },
+  "tableHeaderState": "ESTADO",
+  "@tableHeaderState": {
+    "description": "Cabecera de tabla Estado"
+  },
+  "tableHeaderAction": "ACCIÓN",
+  "@tableHeaderAction": {
+    "description": "Cabecera de tabla Acción"
+  },
+  "tableHeaderProduct": "PRODUCTO",
+  "@tableHeaderProduct": {
+    "description": "Cabecera de tabla Producto"
+  },
+  "tableHeaderCategory": "CATEGORÍA",
+  "@tableHeaderCategory": {
+    "description": "Cabecera de tabla Categoría"
+  },
+  "tableHeaderStock": "STOCK",
+  "@tableHeaderStock": {
+    "description": "Cabecera de tabla Stock"
+  },
+  "tableHeaderPrice": "PRECIO",
+  "@tableHeaderPrice": {
+    "description": "Cabecera de tabla Precio"
+  },
+  "tableHeaderClient": "CLIENTE",
+  "@tableHeaderClient": {
+    "description": "Cabecera de tabla Cliente"
+  },
+  "tableHeaderHour": "HORA",
+  "@tableHeaderHour": {
+    "description": "Cabecera de tabla Hora"
+  },
+  "tableHeaderBasePrice": "PRECIO BASE",
+  "@tableHeaderBasePrice": {
+    "description": "Cabecera de tabla Precio Base"
+  },
+  "tableHeaderDuration": "DURACIÓN",
+  "@tableHeaderDuration": {
+    "description": "Cabecera de tabla Duración"
+  },
+  "tableHeaderType": "TIPO",
+  "@tableHeaderType": {
+    "description": "Cabecera de tabla Tipo"
+  },
+  "tableHeaderRole": "ROL",
+  "@tableHeaderRole": {
+    "description": "Cabecera de tabla Rol"
+  },
+  "tableHeaderEmail": "CORREO",
+  "@tableHeaderEmail": {
+    "description": "Cabecera de tabla Correo"
+  },
+  "tableHeaderPhone": "TELÉFONO",
+  "@tableHeaderPhone": {
+    "description": "Cabecera de tabla Teléfono"
+  },
+  "tableHeaderName": "NOMBRE",
+  "@tableHeaderName": {
+    "description": "Cabecera de tabla Nombre"
+  },
+  "tableHeaderNumber": "N.°",
+  "@tableHeaderNumber": {
+    "description": "Cabecera de tabla Número de documento"
+  },
+  "tableHeaderTotal": "TOTAL",
+  "@tableHeaderTotal": {
+    "description": "Cabecera de tabla Total"
+  },
+  "clinicalUploadsContainedNotice": "Por ahora no se pueden adjuntar archivos ni actualizar la foto de la mascota desde la consulta.",
+  "@clinicalUploadsContainedNotice": {
+    "description": "Aviso de la consulta clínica mientras adjuntar archivos y la foto de la mascota están desactivados"
+  }
+}
+
+

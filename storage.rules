@@ -1,0 +1,64 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isSignedIn() { return request.auth != null; }
+    function role()       { return isSignedIn() ? request.auth.token.role : ''; }
+    function isStaff()    { return role() == 'ADMIN' || role() == 'SUPERADMIN'; }
+    function isActive()   { return isSignedIn() && request.auth.token.status == 'ACTIVE'; }
+
+    function withinSizeLimit() { return request.resource.size < 5 * 1024 * 1024; } // N-22, CA-12 (< 5MB)
+    function isImage()         { return request.resource.contentType in
+                                   ['image/jpeg','image/png','image/webp','image/avif']; } // ADR-018: HEIC y SVG excluidos, AVIF admitido
+    function isPdf()           { return request.resource.contentType == 'application/pdf'; }
+
+    // ── Zona de recepción: la ÚNICA escribible por el usuario (§3.5.A) ──
+    match /uploads/{userId}/{intentId}/{fileName} {
+      allow read:   if isActive() && request.auth.uid == userId;
+      allow create: if isActive() && request.auth.uid == userId
+                    && withinSizeLimit()
+                    && (isImage() || (isPdf() && isStaff()));
+      allow update, delete: if false;
+    }
+
+    // ── Zona definitiva de usuarios: escribe el servidor, lee titular o personal ──
+    match /media/users/{userId}/{allPaths=**} {
+      allow read:  if isStaff() || (isSignedIn() && request.auth.uid == userId);
+      allow write: if false;
+    }
+
+    // ── Zona definitiva de mascotas: escribe el servidor, lee dueño o personal (AUD-032) ──
+    match /media/pets/{ownerId}/{petId}/{allPaths=**} {
+      allow read:  if isStaff() || (isSignedIn() && request.auth.uid == ownerId);
+      allow write: if false;
+    }
+
+    // ── Zona definitiva de productos: escribe el servidor, lee cualquier autenticado (N-08) ──
+    match /media/products/{allPaths=**} {
+      allow read:  if isSignedIn();
+      allow write: if false;
+    }
+
+    // ── Zona de proformas (PDF): escribe el servidor, lee personal o titular de la proforma (FA-02, CA-05) ──
+    match /proformas/{clientId}/{fileName} {
+      allow read:  if isStaff() || (isSignedIn() && request.auth.uid == clientId);
+      allow write: if false;
+    }
+
+    // ── Adjuntos clínicos: SÓLO personal, sin excepción (N-20, CL-11, CA-AD-45) ──
+    match /clinical/{petId}/{allPaths=**} {
+      allow read:  if isStaff();
+      allow write: if false;
+    }
+
+    // ── Imágenes de chat: personal o titular del chat ──
+    match /media/chat/{chatId}/{allPaths=**} {
+      allow read:  if isStaff() || (isSignedIn() && request.auth.uid == chatId);
+      allow write: if false;
+    }
+
+    // ── Cierre: todo lo no declarado queda denegado ──
+    match /{allPaths=**} { allow read, write: if false; }
+  }
+}

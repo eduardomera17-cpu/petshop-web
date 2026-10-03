@@ -1,0 +1,22 @@
+{
+  "name": "petshop-functions",
+  "description": "Cloud Functions for Firebase de PetShop (Node.js).",
+  "private": true,
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "@google-cloud/recaptcha-enterprise": "^7.1.0",
+    "firebase-admin": "^14.5.0",
+    "firebase-functions": "^7.3.2",
+    "nodemailer": "^10.0.14",
+    "pdfkit": "^0.20.1",
+    "sharp": "^0.35.4"
+  },
+  "optionalDependencies": {
+    "@img/sharp-linux-x64": "^0.35.4"
+  }
+}

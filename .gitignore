@@ -1,0 +1,58 @@
+# Flutter / Dart
+.dart_tool/
+.packages
+build/
+.pub-cache/
+.pub/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Node / Functions
+node_modules/
+functions/node_modules/
+
+# Firebase
+.firebase/
+.firebaserc
+firebase-debug.log
+firebase-debug.*.log
+firestore-debug.log
+ui-debug.log
+*-debug.log
+
+# Configuración propia de cada despliegue (usa las plantillas *.example)
+config/app_config.json
+functions/.env
+functions/.env.*
+!functions/.env.example
+
+# IDE & OS
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+.idea/
+.vscode/
+
+# Cobertura y registros
+coverage/
+flutter_*.log
+
+# Variables de entorno, credenciales y secretos: NUNCA se versionan
+.env
+.env.*
+!.env.example
+*.env
+serviceAccountKey.json
+*serviceAccount*.json
+*-adminsdk-*.json
+*.pem
+*.key
+*.p12
+*.keystore
+google-services.json
+GoogleService-Info.plist
+# Tokens de depuración de App Check y exportaciones de usuarios de Firebase Auth
+*appcheck*debug*token*
+auth-export*.json
+auth_export*.json

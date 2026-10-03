@@ -1,0 +1,24 @@
+[
+  {
+    "origin": [
+      "https://YOUR_PROJECT_ID.web.app",
+      "https://YOUR_PROJECT_ID.firebaseapp.com"
+    ],
+    "method": [
+      "GET",
+      "PUT",
+      "POST",
+      "HEAD",
+      "DELETE"
+    ],
+    "responseHeader": [
+      "Content-Type",
+      "Authorization",
+      "Content-Length",
+      "User-Agent",
+      "x-goog-resumable",
+      "x-firebase-appcheck"
+    ],
+    "maxAgeSeconds": 3600
+  }
+]
