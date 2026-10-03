@@ -246,10 +246,10 @@ El proyecto presenta una **postura de seguridad muy por encima de la media** par
 |----|----------------|-----------|--------|------------------|
 | M-01 | Política de contraseñas débil / sin MFA (CWE-521, CWE-308) | 🟡 Media | Abierto | Activar *password policy* en Firebase; subir mínimo cliente a ≥12 con complejidad; MFA TOTP para personal |
 | M-02 | Sesión válida ≤1 h tras desactivar (lecturas) (CWE-613) | 🟡 Media | Abierto | Persistir `revokedAt` y comprobarlo en reglas de lectura, o documentar la ventana |
-| B-01 | Caché de idempotencia sin verificar propietario (CWE-639) | 🟢 Baja | Abierto | Validar `userId === uid` antes de devolver `response`; guardar `userId` en `createAppointment` |
-| B-02 | `reactivateAccountOrPet` sin auditoría ni validación de estado (CWE-778) | 🟢 Baja | Abierto | Añadir `recordAuditLog` y verificar estado `DEACTIVATED` previo |
-| B-03 | Sin `maxInstances` / tope de coste (CWE-770) | 🟢 Baja | Abierto | `setGlobalOptions({ maxInstances })` + alertas de presupuesto |
-| B-04 | Plantillas de correo sin escape HTML (CWE-116) | 🟢 Baja | Abierto | Escapar variables en la variante HTML de `renderTemplate` |
+| B-01 | Caché de idempotencia sin verificar propietario (CWE-639) | 🟢 Baja | ✅ Corregido | Hecho: verificación `userId === uid` en `createAppointment`/`createProductRequest`/`deliverProforma` + se guarda `userId` en `createAppointment` |
+| B-02 | `reactivateAccountOrPet` sin auditoría ni validación de estado (CWE-778) | 🟢 Baja | ✅ Corregido | Hecho: `recordAuditLog` (`REACTIVATE_ACCOUNT`/`REACTIVATE_PET`) y validación de estado `DEACTIVATED` previo en ambas ramas |
+| B-03 | Sin `maxInstances` / tope de coste (CWE-770) | 🟢 Baja | ✅ Corregido | Hecho: `setGlobalOptions({ maxInstances: 10 })` en `config/runtime.js`. Pendiente operativo: alertas de presupuesto en Google Cloud |
+| B-04 | Plantillas de correo sin escape HTML (CWE-116) | 🟢 Baja | ✅ Corregido | Hecho: `escapeHtml` aplicado a la variante HTML en `renderTemplate` (`dispatch_mail.js`) |
 | B-05 | reCAPTCHA *score* definido pero no aplicado en mutaciones | 🟢 Baja | Abierto | Cablear `assertRecaptchaAssessment` en operaciones sensibles o retirar el helper |
 | I-01 | `err.message` interno al cliente (CWE-209) | ⚪ Info | Abierto | Devolver código genérico; detalle solo en logs |
 | I-02 | CSP con `'unsafe-inline'` (requisito de Flutter) | ⚪ Info | Aceptado | Deuda técnica: migrar a CSP con *nonce* cuando sea viable |

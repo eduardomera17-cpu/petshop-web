@@ -1,6 +1,11 @@
 // Cloud Functions entrypoint for PetShop
 // All function exports will be registered here as they are implemented.
 
+// Opciones globales de despliegue (p. ej. maxInstances). DEBE ir antes de cualquier
+// export de función: setGlobalOptions sólo afecta a las funciones definidas tras su llamada,
+// y los módulos ES se evalúan en el orden en que aparecen sus import/export.
+import './config/runtime.js';
+
 export { verifyHuman } from './callables/verifyHuman.js';
 export { completeRegistration } from './callables/completeRegistration.js';
 export { createAppointment } from './callables/createAppointment.js';
