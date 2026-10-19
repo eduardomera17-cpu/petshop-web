@@ -256,6 +256,21 @@ El proyecto presenta una **postura de seguridad muy por encima de la media** par
 | I-03 | `createAssessment` no verifica `hostname` | ⚪ Info | Abierto | Verificar `tokenProperties.hostname` como refuerzo |
 | I-04 | `completeRegistration` sin transacción | ⚪ Info | Abierto | Agrupar escrituras o tolerar reintento idempotente |
 | I-05 | PII ficticia en *showcase* | ⚪ Info | Verificar | Confirmar que `showcase_main.dart` no se publica en producción |
+| Z-01 | ZAP: cabecera CSP no presente en producción | 🟡 Media | Pendiente de despliegue | El código ya la envía (verificado con el emulador de Hosting); desplegar el hosting desde este repositorio |
+| Z-02 | ZAP: `<link>` de Google Fonts sin SRI | 🟡 Media | ✅ Corregido en código · pendiente de despliegue | El repo no carga esa hoja; la CSP ahora bloquea hojas de estilo de terceros |
+
+---
+
+## 🔎 Anexo — Escaneo DAST pasivo (OWASP ZAP vía HostedScan, 2026-10-16)
+
+**Objetivo escaneado:** `https://petshop-digital-dev.web.app/` · **Resultado:** 2 hallazgos de severidad media.
+
+**Causa raíz común:** el sitio escaneado no sirve el código de este repositorio. El `web/index.html` del repo no contiene el `<link>` a Google Fonts que ZAP encontró en la respuesta de `/`, y el `firebase.json` del repo sí emite la CSP en todas las rutas.
+
+- **Z-01 — CSP no presente.** Con la sección `hosting` exacta del repo, el emulador oficial de Firebase Hosting (CLI 15.34.0) devuelve `Content-Security-Policy` en `/`, `/index.html`, rutas de la SPA, recursos JS y respuestas 404: las reglas de `headers` se combinan (la raíz recibe el `Cache-Control` de su regla y la CSP de la regla `**`). No hace falta cambiar código: basta desplegar el hosting desde el repositorio con un `build/web` recién compilado.
+- **Z-02 — Falta SRI en `<link href='https://fonts.googleapis.com/css?family=Roboto'>`.** No se puede usar SRI con Google Fonts, porque su CSS cambia según el navegador. La solución es no cargar hojas de estilo de terceros: el `index.html` del repo ya no lo hace (Flutter/CanvasKit obtiene Roboto por `fetch`, cubierto por `connect-src`). Como protección contra regresiones, se retiró `https://fonts.googleapis.com` de `style-src` en `firebase.json`. Prueba en Chromium headless con el `<link>` exacto del informe: con la política anterior **no se bloqueaba**; con la nueva se bloquea (`style-src-elem`).
+
+**Verificación tras el despliegue:** ver la sección *Comprobar las cabeceras de seguridad tras desplegar* del `README.md`, o repetir el escaneo ZAP.
 
 ---
 
@@ -271,6 +286,8 @@ El proyecto presenta una **postura de seguridad muy por encima de la media** par
 - **reCAPTCHA Enterprise — Interpret assessments** (verificar `valid`, `action`, `hostname`, `score`): https://cloud.google.com/recaptcha/docs/interpret-assessment-website
 - **Flutter — CSP y renderers Wasm/CanvasKit**: https://docs.flutter.dev/platform-integration/web/renderers
 - **sharp — `limitInputPixels`** (protección anti *decompression bomb*, 268 MP por defecto): https://sharp.pixelplumbing.com/api-constructor/
+- **Firebase Hosting — Configure Hosting behavior** (las reglas de `headers` se aplican en orden de definición; "primera coincidencia" solo en `redirects`/`rewrites`): https://firebase.google.com/docs/hosting/full-config
+- **MDN — Subresource Integrity** (referencia citada por el propio informe ZAP): https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Subresource_Integrity
 - **OWASP Top 10:2025**: https://owasp.org/Top10/2025/
 - **NIST SP 800-63B-4 — Passwords** (mínimo 15 / 8 con MFA): https://pages.nist.gov/800-63-4/sp800-63b.html
 - **MITRE CWE**: CWE-521, CWE-308, CWE-613, CWE-639, CWE-770, CWE-116, CWE-209, CWE-778 — https://cwe.mitre.org/
