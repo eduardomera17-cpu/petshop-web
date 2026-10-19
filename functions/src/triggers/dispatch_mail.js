@@ -33,17 +33,34 @@ export const DELIVERY_STATE = {
 };
 
 /**
+ * Escapa los caracteres con significado en HTML para impedir inyección de markup/enlaces
+ * cuando un valor controlado por el usuario (nombre del cliente, de la mascota, etc.) se
+ * interpola en el cuerpo HTML del correo (CWE-116).
+ */
+export function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+/**
  * Sustituye los marcadores {{clave}} de una plantilla con los valores de `data`.
  * Un marcador sin valor se sustituye por cadena vacía: el cliente nunca debe recibir
  * la plantilla en crudo (TRD v1.15 §3.5.H paso 3).
+ *
+ * Con `{ escapeHtml: true }` cada valor interpolado se escapa como HTML: obligatorio al
+ * renderizar la variante HTML del correo, porque sus variables son datos del usuario.
  */
-export function renderTemplate(source, data) {
+export function renderTemplate(source, data, { escapeHtml: doEscape = false } = {}) {
   if (typeof source !== 'string') return '';
   const values = data && typeof data === 'object' ? data : {};
   return source.replace(/\{\{\s*([A-Za-z0-9_.]+)\s*\}\}/g, (_match, key) => {
     const value = values[key];
     if (value === undefined || value === null) return '';
-    return String(value);
+    return doEscape ? escapeHtml(value) : String(value);
   });
 }
 
@@ -131,7 +148,7 @@ export async function dispatchMailDocument({ mailRef, mailData, transport }) {
 
     // 3. Sustitución de variables.
     const subject = renderTemplate(template.subject, data);
-    const html = renderTemplate(template.html, data);
+    const html = renderTemplate(template.html, data, { escapeHtml: true });
     const text = renderTemplate(template.text, data);
 
     const recipients = Array.isArray(mailData.to) ? mailData.to : [mailData.to];

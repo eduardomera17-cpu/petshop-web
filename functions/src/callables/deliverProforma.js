@@ -62,6 +62,12 @@ export const deliverProforma = onCall(
     if (requestId && typeof requestId === 'string' && requestId.trim() !== '') {
       const idempotencyDoc = await db.collection('idempotency').doc(requestId.trim()).get();
       if (idempotencyDoc.exists) {
+        // Sólo el dueño original de la clave puede recuperar la respuesta cacheada (CWE-639).
+        if (idempotencyDoc.data()?.userId !== uid) {
+          throw new HttpsError('permission-denied', 'Clave de idempotencia no válida.', {
+            errorCode: 'IDEMPOTENCY_OWNER_MISMATCH',
+          });
+        }
         return idempotencyDoc.data()?.response;
       }
     }

@@ -117,6 +117,18 @@ flutter build web --release --dart-define-from-file=config/app_config.json
 firebase deploy --only hosting,firestore,storage
 ```
 
+### Comprobar las cabeceras de seguridad tras desplegar
+
+La CSP y el resto de cabeceras de seguridad se definen en `firebase.json`: solo llegan a producción si el hosting se despliega **desde este repositorio** y con un `build/web` **recién compilado** (un `build/web` antiguo publica también un `index.html` antiguo). Tras cada despliegue, comprueba el sitio (sustituye la URL):
+
+```bash
+URL=https://TU_SITIO.web.app
+curl -sI "$URL/" | grep -i '^content-security-policy' || echo "FALTA la cabecera Content-Security-Policy"
+curl -s "$URL/" | grep -i 'fonts.googleapis.com' && echo "index.html carga una hoja de estilos externa"
+```
+
+La CSP bloquea a propósito las hojas de estilo de terceros (una hoja de Google Fonts no admite *Subresource Integrity*). Si necesitas una fuente web, inclúyela en el proyecto como recurso de `pubspec.yaml`.
+
 Desplegar las Cloud Functions (`firebase deploy --only functions`) ejecuta servicios de Cloud Run en tu proyecto y **genera costes**; revisa la facturación antes de hacerlo.
 
 ## Seguridad

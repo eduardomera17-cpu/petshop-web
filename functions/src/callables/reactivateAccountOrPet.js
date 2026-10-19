@@ -6,6 +6,7 @@ import { FieldValue } from 'firebase-admin/firestore';
 import { db, auth } from '../config/firebase.js';
 import { REGIONS, ROLES, USER_STATUS, ENFORCE_APP_CHECK } from '../config/constants.js';
 import { assertRole } from '../domain/guards.js';
+import { recordAuditLog } from '../lib/audit.js';
 
 export const reactivateAccountOrPet = onCall(
   {
@@ -85,6 +86,13 @@ export const reactivateAccountOrPet = onCall(
         );
       }
 
+      // Validar que la cuenta esté efectivamente desactivada antes de reactivar (idempotencia y trazabilidad).
+      if (userData.status !== USER_STATUS.DEACTIVATED) {
+        throw new HttpsError('failed-precondition', 'La cuenta no se encuentra desactivada.', {
+          errorCode: 'NOT_DEACTIVATED',
+        });
+      }
+
       // Transición en Firestore: DEACTIVATED -> ACTIVE
       await userRef.update({
         status: USER_STATUS.ACTIVE,
@@ -107,6 +115,17 @@ export const reactivateAccountOrPet = onCall(
         console.warn(`[reactivateAccountOrPet] Sincronización Auth para ${trimmedEntityId}:`, authError.message);
       }
 
+      // Trazabilidad inmutable en /audit_log (TRD §2.12, N-AD-08)
+      await recordAuditLog(db, {
+        actorUid: callerUid,
+        actorName: request.auth.token?.name || 'Personal',
+        actorRole: callerRole || ROLES.ADMIN,
+        action: 'REACTIVATE_ACCOUNT',
+        targetType: 'USER',
+        targetId: trimmedEntityId,
+        metadata: { targetRole },
+      });
+
       // INVARIANTE DE NEGOCIO (CA-45): Las citas y solicitudes canceladas NO se restauran.
       return {
         success: true,
@@ -127,6 +146,14 @@ export const reactivateAccountOrPet = onCall(
         });
       }
 
+      // Validar que la mascota esté efectivamente desactivada antes de reactivar.
+      const petData = petDoc.data() || {};
+      if (petData.status !== 'DEACTIVATED') {
+        throw new HttpsError('failed-precondition', 'La mascota no se encuentra desactivada.', {
+          errorCode: 'NOT_DEACTIVATED',
+        });
+      }
+
       // Transición en Firestore: DEACTIVATED -> ACTIVE
       await petRef.update({
         status: 'ACTIVE',
@@ -134,6 +161,17 @@ export const reactivateAccountOrPet = onCall(
         deactivatedBy: null,
         'audit.updatedBy': callerUid,
         'audit.updatedAt': now,
+      });
+
+      // Trazabilidad inmutable en /audit_log (TRD §2.12, N-AD-08)
+      await recordAuditLog(db, {
+        actorUid: callerUid,
+        actorName: request.auth.token?.name || 'Personal',
+        actorRole: callerRole || ROLES.ADMIN,
+        action: 'REACTIVATE_PET',
+        targetType: 'PET',
+        targetId: trimmedEntityId,
+        metadata: {},
       });
 
       // INVARIANTE DE NEGOCIO (CA-45): Las citas y solicitudes canceladas NO se restauran.
